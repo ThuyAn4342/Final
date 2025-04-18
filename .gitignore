@@ -1,0 +1,40 @@
+# .NET
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]istPublish/
+bin/
+obj/
+
+# User-specific files
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# NuGet packages (restore automatically)
+packages/
+
+# Tệp cấu hình C# cục bộ
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Các tệp log
+*.log
+
+# Các tệp nhị phân
+*.dll
+*.exe
+*.pdb
+*.cache
