@@ -47,36 +47,40 @@ namespace PresentationLayer
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtTenDN.Focus();
             }
-            tenDangNhap = txtTenDN.Text;
-            if (nguoidungBL.KiemTraTenDangNhapTonTai(tenDangNhap) )
-            {
-                try
-                {
-                    
-                    TaiKhoanNDTO user = nguoidungBL.GetNguoiDungByTenDN(tenDangNhap);
-                    mail = user.mail;
-
-                    //Gửi mã xác nhận qua email
-                    string ma = TaoMaNgauNhien();
-                    MaXacNhanDaGui = "1";
-
-                    //hiển thị controller nhập mã xác nhận                          
-                    LoadController(new NhapMaXN());
-
-                }
-                catch (SqlException ex)
-                {
-
-                    MessageBox.Show(ex.Message);
-                }
-            }
             else
             {
-                MessageBox.Show("Tên đăng nhập không tồn tại!", "Thông báo", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtTenDN.Focus();
+                tenDangNhap = txtTenDN.Text;
+                if (nguoidungBL.KiemTraTenDangNhapTonTai(tenDangNhap))
+                {
+                    try
+                    {
 
-            }
+                        TaiKhoanNDTO user = nguoidungBL.GetNguoiDungByTenDN(tenDangNhap);
+                        mail = user.mail;
+
+                        //Gửi mã xác nhận qua email
+                        string ma = TaoMaNgauNhien();
+                        MaXacNhanDaGui = "1";
+
+                        //hiển thị controller nhập mã xác nhận                          
+                        LoadController(new NhapMaXN());
+
+                    }
+                    catch (SqlException ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Tên đăng nhập không tồn tại!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtTenDN.Focus();
+
+                }
+            }    
+            
 
            
         }
