@@ -12,6 +12,8 @@ using PresentationLayer.QuenMatKhau;
 using BusinessLayer;
 using TransferObject;
 using System.Data.SqlClient;
+using System.Net.Mail;
+using System.Net;
 
 namespace PresentationLayer
 {
@@ -60,10 +62,17 @@ namespace PresentationLayer
 
                         //Gửi mã xác nhận qua email
                         string ma = TaoMaNgauNhien();
-                        MaXacNhanDaGui = "1";
 
-                        //hiển thị controller nhập mã xác nhận                          
-                        LoadController(new NhapMaXN());
+                        // Gửi mã xác nhận
+                        if (GuiMaXacNhan(ma))
+                        {
+                            MaXacNhanDaGui = ma; // Lưu mã để kiểm tra sau
+                            LoadController(new NhapMaXN()); // Hiển thị giao diện nhập mã
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không gửi được mã xác nhận.");
+                        }
 
                     }
                     catch (SqlException ex)
@@ -79,12 +88,43 @@ namespace PresentationLayer
                     txtTenDN.Focus();
 
                 }
-            }    
-            
-
-           
+            }      
         }
 
+        private bool GuiMaXacNhan(string maXacNhan)
+        {
+            try
+            {
+                string fromAdd = "haonhutthach10@gmail.com"; // Email người gửi
+                string fromPassword = "wwnm rtct wnit igql";  // Mật khẩu ứng dụng (App password từ Google)
+
+                string toAdd = nguoidungBL.GetEmailByUsername(txtTenDN.Text); // Lấy email người dùng
+                string subject = "Mã xác nhận đặt lại mật khẩu";
+                string body = $"Xin chào,\n\nMã xác nhận để đặt lại mật khẩu của bạn là: {maXacNhan}\n\nVui lòng không chia sẻ mã này với bất kỳ ai.\n\nTrân trọng.";
+
+                using (MailMessage message = new MailMessage(fromAdd, toAdd))
+                {
+                    message.Subject = subject;
+                    message.Body = body;
+                    message.IsBodyHtml = false; // Nếu dùng HTML thì đặt là true
+
+                    using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                    {
+                        smtp.Credentials = new NetworkCredential(fromAdd, fromPassword);
+                        smtp.EnableSsl = true;
+
+                        smtp.Send(message);
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi gửi email: " + ex.Message);
+                return false;
+            }
+        }
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();

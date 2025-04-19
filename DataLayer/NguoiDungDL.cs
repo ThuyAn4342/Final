@@ -37,7 +37,8 @@ namespace DataLayer
                         ChucNangId = Convert.ToInt32(row["ChucNangId"]),
                         soDT = row["soDT"].ToString(),
                         matKhau = row["matKhau"].ToString(),
-                        linkAnh = row["linkAnh"].ToString()
+                        linkAnh = row["linkAnh"].ToString(),
+                        mail = row["mail"].ToString()
                     };
                 }
                 else
@@ -49,6 +50,24 @@ namespace DataLayer
                 throw ex;
             }
         }
+
+        //Lấy username khi có tên đăng nhập
+        public string GetEmailByUsername(string username)
+        {
+            string sql = "SELECT mail FROM NguoiDung WHERE tenDangNhap = @username";
+            SqlParameter[] parameters = {
+                new SqlParameter("@username", username)
+            };
+
+            DataTable dt = provider.MyExecuteReader(sql, CommandType.Text, parameters);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["mail"].ToString();
+            }
+
+            return null;
+        }
+
 
         //Lấy danh sách người dùng
         public DataTable GetNguoiDungList(int ChucNangId)

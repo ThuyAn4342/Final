@@ -33,7 +33,7 @@ namespace PresentationLayer.Controllers
             dgvSanBay.Columns["quocGia"].HeaderText = "Quốc gia";
 
             //Cột DELETE
-            InputHelper.AddDeleteColumn(dgvSanBay);
+            Helper.AddDeleteColumn(dgvSanBay);
 
             dgvSanBay.ClearSelection();
         }
@@ -44,7 +44,7 @@ namespace PresentationLayer.Controllers
             string tenTinhThanh = txtTinhThanh.Text;
             string tenQuocGia = txtQuocGia.Text;
 
-            if (!InputHelper.IsAllNotEmpty((txtTenSB, "Tên sân bay"),
+            if (!Helper.IsAllNotEmpty((txtTenSB, "Tên sân bay"),
                 (txtTinhThanh, "Tỉnh thành"),
                 (txtQuocGia, "Quốc gia")))
             {
@@ -56,7 +56,7 @@ namespace PresentationLayer.Controllers
             {
                 MessageBox.Show("Đã thêm sân bay thành công!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgvSanBay.DataSource = sanBayBL.GetSanBayList(); // Load lại danh sách
-                InputHelper.CancelInput(txtTenSB, txtTinhThanh, txtQuocGia);
+                Helper.CancelInput(txtTenSB, txtTinhThanh, txtQuocGia);
             }
             else
             {
@@ -66,7 +66,7 @@ namespace PresentationLayer.Controllers
 
         private void btnHuyThemSB_Click(object sender, EventArgs e)
         {
-            InputHelper.CancelInput(txtTenSB, txtTinhThanh, txtQuocGia);
+            Helper.CancelInput(txtTenSB, txtTinhThanh, txtQuocGia);
             dgvSanBay.ClearSelection();
         }
 
@@ -79,7 +79,7 @@ namespace PresentationLayer.Controllers
                 return;
             }
 
-            if (!InputHelper.IsAllNotEmpty((txtTenSB, "Tên sân bay"),
+            if (!Helper.IsAllNotEmpty((txtTenSB, "Tên sân bay"),
                (txtTinhThanh, "Tỉnh thành"),
                (txtQuocGia, "Quốc gia")))
             {
@@ -97,7 +97,7 @@ namespace PresentationLayer.Controllers
                     MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgvSanBay.DataSource = sanBayBL.GetSanBayList(); // Refresh dữ liệu
                     dgvSanBay.ClearSelection();
-                    InputHelper.CancelInput(txtTenSB, txtTinhThanh, txtQuocGia);
+                    Helper.CancelInput(txtTenSB, txtTinhThanh, txtQuocGia);
                 }
                 else
                 {
@@ -109,7 +109,7 @@ namespace PresentationLayer.Controllers
                 MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    
+
 
         private void dgvSanBay_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -137,7 +137,9 @@ namespace PresentationLayer.Controllers
             {
                 // Đảm bảo không click vào header
                 if (e.RowIndex < 0) return;
-
+            }
+            if (dgvSanBay.SelectedRows.Count > 0)
+            {
                 // Lấy dòng được click
                 DataGridViewRow selectedRow = dgvSanBay.Rows[e.RowIndex];
                 // Lấy giá trị từ cột theo tên cột

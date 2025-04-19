@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatKnowledgeDL.cs" />
     <Compile Include="ChucNangDL.cs" />
     <Compile Include="ChuyenBayDL.cs" />
     <Compile Include="DataProvider.cs" />

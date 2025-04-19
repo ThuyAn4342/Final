@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.pnProjectBy = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,10 +52,7 @@
             this.picAvatar = new System.Windows.Forms.PictureBox();
             this.lbName = new System.Windows.Forms.Label();
             this.pnMain = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.btnChatbot = new System.Windows.Forms.Button();
             this.pnProjectBy.SuspendLayout();
             this.pnNavigation.SuspendLayout();
             this.pnAvatar.SuspendLayout();
@@ -74,6 +75,50 @@
             this.pnProjectBy.Name = "pnProjectBy";
             this.pnProjectBy.Size = new System.Drawing.Size(1427, 136);
             this.pnProjectBy.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Navy;
+            this.label1.Location = new System.Drawing.Point(926, 99);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(246, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "* Mail: 225105CNTT@ou.edu.vn";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Navy;
+            this.label2.Location = new System.Drawing.Point(926, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(144, 20);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "* SĐT: 096476634";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Navy;
+            this.label3.Location = new System.Drawing.Point(926, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(439, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "* Địa chỉ: Phước Kiển, Nhà bè, TP. Hồ Chí Minh, Việt Nam";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label8.Location = new System.Drawing.Point(1099, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 25);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Liên hệ";
             // 
             // label7
             // 
@@ -122,6 +167,7 @@
             // pnNavigation
             // 
             this.pnNavigation.BackColor = System.Drawing.Color.AliceBlue;
+            this.pnNavigation.Controls.Add(this.btnChatbot);
             this.pnNavigation.Controls.Add(this.btnDangXuat);
             this.pnNavigation.Controls.Add(this.btnThongKeBaoCao);
             this.pnNavigation.Controls.Add(this.btnQuyDinh);
@@ -145,9 +191,9 @@
             this.btnDangXuat.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangXuat.Location = new System.Drawing.Point(0, 575);
+            this.btnDangXuat.Location = new System.Drawing.Point(0, 608);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(287, 51);
+            this.btnDangXuat.Size = new System.Drawing.Size(287, 49);
             this.btnDangXuat.TabIndex = 10;
             this.btnDangXuat.TabStop = false;
             this.btnDangXuat.Text = "Đăng xuất";
@@ -160,9 +206,9 @@
             this.btnThongKeBaoCao.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnThongKeBaoCao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThongKeBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongKeBaoCao.Location = new System.Drawing.Point(0, 523);
+            this.btnThongKeBaoCao.Location = new System.Drawing.Point(0, 504);
             this.btnThongKeBaoCao.Name = "btnThongKeBaoCao";
-            this.btnThongKeBaoCao.Size = new System.Drawing.Size(287, 51);
+            this.btnThongKeBaoCao.Size = new System.Drawing.Size(287, 49);
             this.btnThongKeBaoCao.TabIndex = 9;
             this.btnThongKeBaoCao.TabStop = false;
             this.btnThongKeBaoCao.Text = "Thống kê, báo cáo";
@@ -175,9 +221,9 @@
             this.btnQuyDinh.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnQuyDinh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuyDinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuyDinh.Location = new System.Drawing.Point(0, 471);
+            this.btnQuyDinh.Location = new System.Drawing.Point(0, 451);
             this.btnQuyDinh.Name = "btnQuyDinh";
-            this.btnQuyDinh.Size = new System.Drawing.Size(287, 51);
+            this.btnQuyDinh.Size = new System.Drawing.Size(287, 49);
             this.btnQuyDinh.TabIndex = 8;
             this.btnQuyDinh.TabStop = false;
             this.btnQuyDinh.Text = "Quy định";
@@ -190,9 +236,9 @@
             this.btnQLTaiKhoan.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnQLTaiKhoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQLTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLTaiKhoan.Location = new System.Drawing.Point(0, 420);
+            this.btnQLTaiKhoan.Location = new System.Drawing.Point(0, 400);
             this.btnQLTaiKhoan.Name = "btnQLTaiKhoan";
-            this.btnQLTaiKhoan.Size = new System.Drawing.Size(287, 51);
+            this.btnQLTaiKhoan.Size = new System.Drawing.Size(287, 49);
             this.btnQLTaiKhoan.TabIndex = 7;
             this.btnQLTaiKhoan.TabStop = false;
             this.btnQLTaiKhoan.Text = "Quản lý tài khoản";
@@ -205,9 +251,9 @@
             this.btnQLVeHoaDon.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnQLVeHoaDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQLVeHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLVeHoaDon.Location = new System.Drawing.Point(0, 368);
+            this.btnQLVeHoaDon.Location = new System.Drawing.Point(0, 349);
             this.btnQLVeHoaDon.Name = "btnQLVeHoaDon";
-            this.btnQLVeHoaDon.Size = new System.Drawing.Size(287, 51);
+            this.btnQLVeHoaDon.Size = new System.Drawing.Size(287, 49);
             this.btnQLVeHoaDon.TabIndex = 6;
             this.btnQLVeHoaDon.TabStop = false;
             this.btnQLVeHoaDon.Text = "Quản lý vé, hóa đơn";
@@ -220,9 +266,9 @@
             this.btnSanBay.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnSanBay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSanBay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSanBay.Location = new System.Drawing.Point(0, 316);
+            this.btnSanBay.Location = new System.Drawing.Point(0, 298);
             this.btnSanBay.Name = "btnSanBay";
-            this.btnSanBay.Size = new System.Drawing.Size(287, 51);
+            this.btnSanBay.Size = new System.Drawing.Size(287, 49);
             this.btnSanBay.TabIndex = 5;
             this.btnSanBay.TabStop = false;
             this.btnSanBay.Text = "Sân Bay";
@@ -235,9 +281,9 @@
             this.btnMayBay.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnMayBay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMayBay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMayBay.Location = new System.Drawing.Point(0, 264);
+            this.btnMayBay.Location = new System.Drawing.Point(0, 247);
             this.btnMayBay.Name = "btnMayBay";
-            this.btnMayBay.Size = new System.Drawing.Size(287, 51);
+            this.btnMayBay.Size = new System.Drawing.Size(287, 49);
             this.btnMayBay.TabIndex = 4;
             this.btnMayBay.TabStop = false;
             this.btnMayBay.Text = "Máy bay";
@@ -250,9 +296,9 @@
             this.btnTuyenBay.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnTuyenBay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTuyenBay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTuyenBay.Location = new System.Drawing.Point(0, 211);
+            this.btnTuyenBay.Location = new System.Drawing.Point(0, 196);
             this.btnTuyenBay.Name = "btnTuyenBay";
-            this.btnTuyenBay.Size = new System.Drawing.Size(287, 51);
+            this.btnTuyenBay.Size = new System.Drawing.Size(287, 49);
             this.btnTuyenBay.TabIndex = 3;
             this.btnTuyenBay.TabStop = false;
             this.btnTuyenBay.Text = "Tuyến bay";
@@ -265,9 +311,9 @@
             this.btnChuyenBay.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnChuyenBay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChuyenBay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChuyenBay.Location = new System.Drawing.Point(0, 158);
+            this.btnChuyenBay.Location = new System.Drawing.Point(0, 145);
             this.btnChuyenBay.Name = "btnChuyenBay";
-            this.btnChuyenBay.Size = new System.Drawing.Size(287, 51);
+            this.btnChuyenBay.Size = new System.Drawing.Size(287, 49);
             this.btnChuyenBay.TabIndex = 2;
             this.btnChuyenBay.TabStop = false;
             this.btnChuyenBay.Text = "Chuyến bay";
@@ -282,7 +328,7 @@
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.ForeColor = System.Drawing.Color.DarkBlue;
-            this.btnHome.Location = new System.Drawing.Point(0, 106);
+            this.btnHome.Location = new System.Drawing.Point(0, 93);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(287, 51);
             this.btnHome.TabIndex = 1;
@@ -334,49 +380,20 @@
             this.pnMain.Size = new System.Drawing.Size(1137, 663);
             this.pnMain.TabIndex = 4;
             // 
-            // label1
+            // btnChatbot
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(926, 99);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "* Mail: 225105CNTT@ou.edu.vn";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(926, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 20);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "* SĐT: 096476634";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Navy;
-            this.label3.Location = new System.Drawing.Point(926, 45);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(439, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "* Địa chỉ: Phước Kiển, Nhà bè, TP. Hồ Chí Minh, Việt Nam";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label8.Location = new System.Drawing.Point(1099, 10);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 25);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Liên hệ";
+            this.btnChatbot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChatbot.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.btnChatbot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChatbot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChatbot.Location = new System.Drawing.Point(0, 556);
+            this.btnChatbot.Name = "btnChatbot";
+            this.btnChatbot.Size = new System.Drawing.Size(287, 49);
+            this.btnChatbot.TabIndex = 10;
+            this.btnChatbot.TabStop = false;
+            this.btnChatbot.Text = "Trợ lý ảo";
+            this.btnChatbot.UseVisualStyleBackColor = true;
+            this.btnChatbot.Click += new System.EventHandler(this.btnChatbot_Click);
             // 
             // Home
             // 
@@ -428,5 +445,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnChatbot;
     }
 }

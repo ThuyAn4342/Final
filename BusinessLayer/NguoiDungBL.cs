@@ -27,6 +27,11 @@ namespace BusinessLayer
             }
         }
 
+        public string GetEmailByUsername(string username)
+        {
+            return nguoidungDL.GetEmailByUsername(username);
+        }
+
 
         //Lấy danh sách người dùng
         public DataTable GetNguoiDungList(int ChucNangId)

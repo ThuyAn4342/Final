@@ -78,6 +78,7 @@ namespace PresentationLayer
 
                         this.DialogResult = DialogResult.OK;
                         this.Close(); // login thành công
+                        CurrentUserTO.Email = account.mail;
                     }
                     else
                     {

@@ -9,5 +9,7 @@ namespace TransferObject
     public static class CurrentUserTO
     {
         public static TaiKhoanNDTO TaiKhoan { get; set; }
+
+        public static string Email { get; set; }
     }
 }

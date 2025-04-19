@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataLayer;
+using ClosedXML.Excel;
 
 namespace BusinessLayer
 {
@@ -62,6 +64,37 @@ namespace BusinessLayer
                 throw ex;
             }
             
+        }
+
+        //
+        public string ExportReportToExcelFile(DataTable dataTable)
+        {
+            string filePath = Path.Combine(Path.GetTempPath(), "BaoCaoThongKe_" + DateTime.Now.ToString("ddMMyyyy") + ".xlsx");
+
+            var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("BaoCao");
+
+            // Header
+            for (int col = 0; col < dataTable.Columns.Count; col++)
+            {
+                worksheet.Cell(1, col + 1).Value = dataTable.Columns[col].ColumnName;
+            }
+
+            // Data
+            for (int row = 0; row < dataTable.Rows.Count; row++)
+            {
+                for (int col = 0; col < dataTable.Columns.Count; col++)
+                {
+                    worksheet.Cell(row + 2, col + 1).Value = dataTable.Rows[row][col]?.ToString();
+                }
+            }
+
+            worksheet.Columns().AdjustToContents();
+
+            workbook.SaveAs(filePath);
+           
+
+            return filePath;
         }
     }
 }

@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -14,6 +12,8 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Globalization;
 using ClosedXML.Excel;
 using System.Data.SqlClient;
+using TransferObject;
+
 
 namespace PresentationLayer.Controllers
 {
@@ -226,6 +226,89 @@ namespace PresentationLayer.Controllers
             Legend legend = new Legend("Legend");
             legend.Docking = Docking.Right;
             chart_ThongKe.Legends.Add(legend);
+        }
+
+        private bool SendMail(DataTable dataTable)
+        {
+            try
+            {
+                string filePath = thongkeBL.ExportReportToExcelFile(dataTable);
+
+                string fromAdd = "haonhutthach10@gmail.com";
+                string toAdd = CurrentUserTO.Email;
+                string subject = "Báo cáo sân bay (Excel)";
+                string body = "File Excel báo cáo danh sách sân bay được đính kèm.";
+
+                using (MailMessage mail = new MailMessage(fromAdd, toAdd, subject, body))
+                {
+                    using (Attachment attachment = new Attachment(filePath))
+                    {
+                        mail.Attachments.Add(attachment);
+
+                        using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                        {
+                            smtp.Credentials = new NetworkCredential(fromAdd, "wwnm rtct wnit igql");
+                            smtp.EnableSsl = true;
+
+                            smtp.Send(mail);
+                        }
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi gửi email: " + ex.Message);
+                return false;
+            }
+        }
+
+        private async void btnGuiMail_Click(object sender, EventArgs e)
+        {
+
+            DataTable dataTable = (DataTable)dgvThongKe.DataSource;
+
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                // Hiển thị loading form từ UI thread
+                LoadingForm loadingForm = new LoadingForm();
+                loadingForm.StartPosition = FormStartPosition.CenterScreen;
+
+                loadingForm.Show();
+
+                bool result = false;
+
+                try
+                {
+                    result = await Task.Run(() => SendMail(dataTable));
+                }
+                finally
+                {
+                    // Đóng form loading an toàn từ UI thread
+                    if (loadingForm.InvokeRequired)
+                    {
+                        loadingForm.Invoke(new Action(() => loadingForm.Close()));
+                    }
+                    else
+                    {
+                        loadingForm.Close();
+                    }
+                }
+
+                if (result)
+                {
+                    MessageBox.Show("Gửi email kèm file Excel thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Gửi email thất bại!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không có dữ liệu để gửi mail.");
+            }
         }
     }
 }

@@ -81,36 +81,39 @@
             this.btnHuy.BackColor = System.Drawing.Color.Red;
             this.btnHuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Location = new System.Drawing.Point(862, 568);
+            this.btnHuy.Location = new System.Drawing.Point(921, 528);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(106, 34);
             this.btnHuy.TabIndex = 138;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnCapNhatMB
             // 
             this.btnCapNhatMB.BackColor = System.Drawing.Color.Blue;
             this.btnCapNhatMB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapNhatMB.ForeColor = System.Drawing.Color.White;
-            this.btnCapNhatMB.Location = new System.Drawing.Point(924, 515);
+            this.btnCapNhatMB.Location = new System.Drawing.Point(799, 528);
             this.btnCapNhatMB.Name = "btnCapNhatMB";
             this.btnCapNhatMB.Size = new System.Drawing.Size(106, 34);
             this.btnCapNhatMB.TabIndex = 139;
             this.btnCapNhatMB.Text = "Cập nhật";
             this.btnCapNhatMB.UseVisualStyleBackColor = false;
+            this.btnCapNhatMB.Click += new System.EventHandler(this.btnCapNhatMB_Click);
             // 
             // btnThemMB
             // 
             this.btnThemMB.BackColor = System.Drawing.Color.DarkCyan;
             this.btnThemMB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemMB.ForeColor = System.Drawing.Color.White;
-            this.btnThemMB.Location = new System.Drawing.Point(791, 515);
+            this.btnThemMB.Location = new System.Drawing.Point(680, 528);
             this.btnThemMB.Name = "btnThemMB";
             this.btnThemMB.Size = new System.Drawing.Size(103, 34);
             this.btnThemMB.TabIndex = 137;
             this.btnThemMB.Text = "Thêm";
             this.btnThemMB.UseVisualStyleBackColor = false;
+            this.btnThemMB.Click += new System.EventHandler(this.btnThemMB_Click);
             // 
             // label10
             // 
@@ -205,6 +208,7 @@
             this.dgvDSMayBay.RowTemplate.Height = 24;
             this.dgvDSMayBay.Size = new System.Drawing.Size(931, 355);
             this.dgvDSMayBay.TabIndex = 131;
+            this.dgvDSMayBay.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSMayBay_CellClick);
             // 
             // label1
             // 

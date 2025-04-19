@@ -175,5 +175,11 @@ namespace PresentationLayer
 
 
         }
+
+        private void btnChatbot_Click(object sender, EventArgs e)
+        {
+            ActivateButton(btnChatbot);
+            LoadController(new Chatbot());
+        }
     }
 }

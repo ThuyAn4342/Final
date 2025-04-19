@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer
 {
-    public static class InputHelper
+    public static class Helper
     {
         //Hàm kiểm tra dữ liệu lấy từ form nhập liệu -> Trả về INT 
         public static bool TryGetIntFromTextBox(TextBox textBox, out int value, string fieldName)
@@ -86,6 +86,8 @@ namespace PresentationLayer
                 textcontent2.Clear();
             }
         }
+
+        //
 
     }
 }

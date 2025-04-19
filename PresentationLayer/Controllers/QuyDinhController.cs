@@ -34,7 +34,7 @@ namespace PresentationLayer.Controllers
             dgvQuyDinh.Columns["noidungQD"].HeaderText = "Nội dung quy định";
             dgvQuyDinh.Columns["ngayCapNhat"].HeaderText = "Ngày cập nhật";
             //Cột DELETE
-            InputHelper.AddDeleteColumn(dgvQuyDinh);
+            Helper.AddDeleteColumn(dgvQuyDinh);
         }
 
         private void QuyDinhController_Load(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace PresentationLayer.Controllers
         private void btnThemQD_Click(object sender, EventArgs e)
         {
             // Kiểm tra rỗng
-            if (!InputHelper.IsAllNotEmpty(
+            if (!Helper.IsAllNotEmpty(
                 (txtTenQuyDinh, "Tên quy định"),
                 (txtNoiDungQD, "Nội dung quy định")))
             {
@@ -55,7 +55,7 @@ namespace PresentationLayer.Controllers
 
             // Kiểm tra nội dung có phải là số nguyên
             int noiDungQD;
-            if (!InputHelper.TryGetIntFromTextBox(txtNoiDungQD, out noiDungQD, "Nội dung quy định"))
+            if (!Helper.TryGetIntFromTextBox(txtNoiDungQD, out noiDungQD, "Nội dung quy định"))
             {
                 return;
             }
@@ -65,7 +65,7 @@ namespace PresentationLayer.Controllers
             {
                 MessageBox.Show("Thêm quy định thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgvQuyDinh.DataSource = quyDinhBL.GetQuyDinhList(); // Hoặc LoadQuyDinh() nếu bạn có
-                InputHelper.CancelInput(txtTenQuyDinh, txtNoiDungQD);
+                Helper.CancelInput(txtTenQuyDinh, txtNoiDungQD);
             }
             else
             {
@@ -82,7 +82,7 @@ namespace PresentationLayer.Controllers
             }
 
             // Kiểm tra rỗng
-            if (!InputHelper.IsAllNotEmpty(
+            if (!Helper.IsAllNotEmpty(
                 (txtTenQuyDinh, "Tên quy định"),
                 (txtNoiDungQD, "Nội dung quy định")))
             {
@@ -90,7 +90,7 @@ namespace PresentationLayer.Controllers
             }
 
             // Kiểm tra nội dung là số nguyên
-            if (!InputHelper.TryGetIntFromTextBox(txtNoiDungQD, out int noiDungQD, "Nội dung quy định"))
+            if (!Helper.TryGetIntFromTextBox(txtNoiDungQD, out int noiDungQD, "Nội dung quy định"))
             {
                 return;
             }
@@ -105,7 +105,7 @@ namespace PresentationLayer.Controllers
                     MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgvQuyDinh.DataSource = quyDinhBL.GetQuyDinhList();
                     dgvQuyDinh.ClearSelection();
-                    InputHelper.CancelInput(txtTenQuyDinh, txtNoiDungQD);
+                    Helper.CancelInput(txtTenQuyDinh, txtNoiDungQD);
                 }
                 else
                 {
@@ -120,7 +120,7 @@ namespace PresentationLayer.Controllers
 
         private void btnHuyThemQD_Click(object sender, EventArgs e)
         {
-            InputHelper.CancelInput(txtTenQuyDinh, txtNoiDungQD);
+            Helper.CancelInput(txtTenQuyDinh, txtNoiDungQD);
             dgvQuyDinh.ClearSelection();
         }
 
@@ -150,7 +150,9 @@ namespace PresentationLayer.Controllers
             {
                 // Đảm bảo không click vào header
                 if (e.RowIndex < 0) return;
-
+            }
+            if (dgvQuyDinh.SelectedRows.Count > 0)
+            {
                 // Lấy dòng được click
                 DataGridViewRow selectedRow = dgvQuyDinh.Rows[e.RowIndex];
                 // Lấy giá trị từ cột theo tên cột

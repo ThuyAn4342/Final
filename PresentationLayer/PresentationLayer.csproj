@@ -95,6 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Controllers\Chatbot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controllers\Chatbot.Designer.cs">
+      <DependentUpon>Chatbot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ChuyenBayController.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -149,7 +155,13 @@
     <Compile Include="Controllers\TuyenBayController.Designer.cs">
       <DependentUpon>TuyenBayController.cs</DependentUpon>
     </Compile>
-    <Compile Include="InputHelper.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +194,9 @@
     <Compile Include="QuenMatKhau\ThayDoiMatKhau.Designer.cs">
       <DependentUpon>ThayDoiMatKhau.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controllers\Chatbot.resx">
+      <DependentUpon>Chatbot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controllers\ChuyenBayController.resx">
       <DependentUpon>ChuyenBayController.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controllers\TuyenBayController.resx">
       <DependentUpon>TuyenBayController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
