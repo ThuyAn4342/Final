@@ -164,6 +164,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.Designer.cs">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuenMatKhau\NhapMaXN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuenMatKhau\NhapMaXN.Designer.cs">
+      <DependentUpon>NhapMaXN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuenMatKhau\ThayDoiMatKhau.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuenMatKhau\ThayDoiMatKhau.Designer.cs">
+      <DependentUpon>ThayDoiMatKhau.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Controllers\ChuyenBayController.resx">
       <DependentUpon>ChuyenBayController.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +225,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ForgotPassword.resx">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuenMatKhau\NhapMaXN.resx">
+      <DependentUpon>NhapMaXN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuenMatKhau\ThayDoiMatKhau.resx">
+      <DependentUpon>ThayDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -13,7 +13,7 @@ using BusinessLayer;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Globalization;
 using ClosedXML.Excel;
-
+using System.Data.SqlClient;
 
 namespace PresentationLayer.Controllers
 {
@@ -33,6 +33,7 @@ namespace PresentationLayer.Controllers
             lbSoVeDaBan.Text = veCBBL.GetTongSoVe(0, namHienTai).ToString();
             lbTongCB.Text = chuyenbayBL.GetSoLuongChuyenBay(0, namHienTai).ToString();
             txtNamThongKe.Text = namHienTai.ToString(); // năm hiện tại DateTime.Now.Year
+            txtThangThongKe.Clear();
             DataTable dt = thongkeBL.GetThongKeTheoThangNam(0, namHienTai);
             dgvThongKe.DataSource = dt;
             double s = thongkeBL.TongDoanhThu(dt);
@@ -54,7 +55,8 @@ namespace PresentationLayer.Controllers
             {
                if(nam == 0)
                 {
-                    MessageBox.Show("Vui lòng nhập giá trị Năm hợp lệ để thống kê!");
+                    MessageBox.Show("Vui lòng nhập giá trị Năm hợp lệ để thống kê!","Thông báo", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     ResetThongKe();
                     txtThangThongKe.Focus();
                }
@@ -68,7 +70,8 @@ namespace PresentationLayer.Controllers
                     {
                         if (!int.TryParse(txtThangThongKe.Text, out thang))
                         {
-                            MessageBox.Show("Vui lòng nhập giá trị Tháng hợp lệ để thống kê!");
+                            MessageBox.Show("Vui lòng nhập giá trị Tháng hợp lệ để thống kê!", "Thông báo", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             ResetThongKe();
                             txtThangThongKe.Focus();
                         }
@@ -77,21 +80,40 @@ namespace PresentationLayer.Controllers
                     lbTongCB.Text = chuyenbayBL.GetSoLuongChuyenBay(thang, nam).ToString();
                     txtNamThongKe.Text = nam.ToString();
                     txtThangThongKe.Text = thang.ToString();
-                    DataTable dt = thongkeBL.GetThongKeTheoThangNam(thang, nam);
-                    dgvThongKe.DataSource = dt;
-                    double s = thongkeBL.TongDoanhThu(dt);
-                    lbTongDoanhThu.Text = "    "+ s.ToString("N0") + " VNĐ";
+                    try
+                    {
+                        DataTable dt = thongkeBL.GetThongKeTheoThangNam(thang, nam);
+                        dgvThongKe.DataSource = dt;
+                        if (dt != null)
+                        {
+                            double s = thongkeBL.TongDoanhThu(dt);
+                            lbTongDoanhThu.Text = "    " + s.ToString("N0") + " VNĐ";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không có dữ liệu cho tháng " + thang.ToString() + " năm " + nam.ToString(), "Thông báo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ResetThongKe();
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
 
                 }
 
             }
             else
             {
-                MessageBox.Show("Vui lòng nhập giá trị hợp lệ để thống kê!!!");
+                MessageBox.Show("Vui lòng nhập giá trị hợp lệ để thống kê!!!", "Thông báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ResetThongKe();
                 txtThangThongKe.Focus();
             }
             DrawChart((DataTable)dgvThongKe.DataSource);
+
 
         }
 

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
+using System.Text;
 using BusinessLayer;
 using TransferObject;
 
@@ -21,6 +23,24 @@ namespace PresentationLayer.Controllers
             InitializeComponent();
         }
 
+        //Hàm băm mật khẩu
+        public string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(password);
+                byte[] hashBytes = sha256.ComputeHash(bytes);
+
+                // Chuyển mảng byte thành chuỗi hex
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in hashBytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+
+                return builder.ToString();
+            }
+        }
         public void NguoiDungDisplay()
         {
             //Load danh sách tài khoản khách hàng
@@ -62,6 +82,7 @@ namespace PresentationLayer.Controllers
             txtSoDT.Clear();
             txtTenDN.Clear();
             txtAnhDaiDien.Clear();
+            txtMail.Clear();
         }
         private void btnThemTK_Click(object sender, EventArgs e)
         {
@@ -70,25 +91,29 @@ namespace PresentationLayer.Controllers
             string tenDangNhap = txtTenDN.Text;
             string soDT = txtSoDT.Text;
             string anhDaiDien = txtAnhDaiDien.Text;
-            string matKhau = txtMatKhau.Text;
+            string matKhau = HashPassword(txtMatKhau.Text);
+            string mail = txtMail.Text;
 
 
             if (chucnang == null || string.IsNullOrEmpty(tenDangNhap) || string.IsNullOrEmpty(matKhau))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
            
-            bool result = nguoidungBL.AddNguoiDung(hoTen,tenDangNhap,chucnang,soDT,matKhau, anhDaiDien);
+            bool result = nguoidungBL.AddNguoiDung(hoTen,tenDangNhap,chucnang,soDT,matKhau, anhDaiDien, mail);
             if (result)
             {
-                MessageBox.Show("Thêm tài khoản người dùng thành công.");
+                MessageBox.Show("Thêm tài khoản người dùng thành công.", "Thông báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 NguoiDungDisplay();
                 Reset();
             }
             else
             {
-                MessageBox.Show("Thêm tài khoản người dùng thất bại!");
+                MessageBox.Show("Thêm tài khoản người dùng thất bại!", "Thông báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -102,17 +127,36 @@ namespace PresentationLayer.Controllers
         {
             int maND = 0;
 
+
             // Xác định tab đang được chọn và lấy maND tương ứng
             if (tabTKND.SelectedTab == tabKH)
             {
+                if (dgvTKKH.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn một dòng để cập nhật.", "Thông báo", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 maND = Convert.ToInt32(dgvTKKH.CurrentRow.Cells["maND"].Value);
             }
             else if (tabTKND.SelectedTab == tabNV)
             {
+                if (dgvTKNV.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn một dòng để cập nhật.", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 maND = Convert.ToInt32(dgvTKNV.CurrentRow.Cells["maND_NV"].Value);
             }
             else if (tabTKND.SelectedTab == tabQTV)
             {
+                if (dgvTKQTV.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn một dòng để cập nhật.", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 maND = Convert.ToInt32(dgvTKQTV.CurrentRow.Cells["maND_Admin"].Value);
             }
             int chucnang = Convert.ToInt32(cbChucNang.SelectedValue);
@@ -120,25 +164,29 @@ namespace PresentationLayer.Controllers
             string tenDangNhap = txtTenDN.Text;
             string soDT = txtSoDT.Text;
             string anhDaiDien = txtAnhDaiDien.Text;
-            string matKhau = txtMatKhau.Text;
+            string matKhau = HashPassword(txtMatKhau.Text);
+            string mail = txtMail.Text;
 
 
             if (chucnang == null || string.IsNullOrEmpty(tenDangNhap) || string.IsNullOrEmpty(matKhau))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            bool result = nguoidungBL.UpdateNuoiDung(maND,hoTen, tenDangNhap, chucnang, soDT, matKhau, anhDaiDien);
+            bool result = nguoidungBL.UpdateNuoiDung(maND,hoTen, tenDangNhap, chucnang, soDT, matKhau, anhDaiDien, mail);
             if (result)
             {
-                MessageBox.Show("Cập nhật tài khoản người dùng thành công.");
+                MessageBox.Show("Cập nhật tài khoản người dùng thành công.", "Thông báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 NguoiDungDisplay();
                 Reset();
             }
             else
             {
-                MessageBox.Show("Cập nhật tài khoản người dùng thất bại!");
+                MessageBox.Show("Cập nhật tài khoản người dùng thất bại!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -180,6 +228,7 @@ namespace PresentationLayer.Controllers
                 txtMatKhau.Text = row.Cells["matKhau"].Value.ToString();
                 txtAnhDaiDien.Text = row.Cells["linkAnh"].Value.ToString(); 
                 cbChucNang.SelectedValue = row.Cells["ChucNangId"].Value;
+                txtMail.Text = row.Cells["mail"].Value.ToString();
             }
         }
 
@@ -244,6 +293,7 @@ namespace PresentationLayer.Controllers
                 txtMatKhau.Text = row.Cells["matKhau_NV"].Value.ToString();
                 txtAnhDaiDien.Text = row.Cells["linkAnh_NV"].Value.ToString();
                 cbChucNang.SelectedValue = row.Cells["ChucNangId_NV"].Value;
+                txtMail.Text = row.Cells["mail_NV"].Value.ToString();
             }
         }
 
@@ -260,6 +310,7 @@ namespace PresentationLayer.Controllers
                 txtMatKhau.Text = row.Cells["matKhau_Admin"].Value.ToString();
                 txtAnhDaiDien.Text = row.Cells["linkAnh_Admin"].Value.ToString();
                 cbChucNang.SelectedValue = row.Cells["ChucNangId_Admin"].Value;
+                txtMail.Text = row.Cells["mail_Admin"].Value.ToString();
             }
         }
     }

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using TransferObject;
 using BusinessLayer;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace PresentationLayer.Controllers
 {
@@ -43,6 +44,7 @@ namespace PresentationLayer.Controllers
             txtMatKhau.Text = User.matKhau;
             txtSoDT.Text = User.soDT;
             txtLinkAnh.Text = User.linkAnh;
+            txtMail.Text = User.mail;
 
             // Ảnh đại diện
             if (!string.IsNullOrEmpty(User.linkAnh) && File.Exists(User.linkAnh))
@@ -83,6 +85,24 @@ namespace PresentationLayer.Controllers
             }
         }
 
+        //Hàm băm mật khẩu
+        public string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(password);
+                byte[] hashBytes = sha256.ComputeHash(bytes);
+
+                // Chuyển mảng byte thành chuỗi hex
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in hashBytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+
+                return builder.ToString();
+            }
+        }
         private void btnCapNhatTT_Click(object sender, EventArgs e)
         {
             int chucnang = Convert.ToInt32(cbChucNang.SelectedValue);
@@ -90,7 +110,8 @@ namespace PresentationLayer.Controllers
             string tenDangNhap = txtTenDN.Text;
             string soDT = txtSoDT.Text;
             string linkAnh = txtLinkAnh.Text;
-            string matKhau = txtMatKhau.Text;
+            string matKhau = HashPassword(txtMatKhau.Text);
+            string mail = txtMail.Text;
 
 
             try
@@ -102,7 +123,7 @@ namespace PresentationLayer.Controllers
                 }
 
                 bool result = nguoidungBL.UpdateNuoiDung(CurrentUserTO.TaiKhoan.maND, hoTen, tenDangNhap,
-                    chucnang, soDT, matKhau, linkAnh);
+                    chucnang, soDT, matKhau, linkAnh, mail);
                 if (result)
                 {
                     try

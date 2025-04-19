@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.linkQuenMK = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -98,7 +99,7 @@
             this.btnLogin.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(311, 239);
+            this.btnLogin.Location = new System.Drawing.Point(309, 210);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(161, 36);
             this.btnLogin.TabIndex = 2;
@@ -111,13 +112,26 @@
             this.btnCancel.BackColor = System.Drawing.Color.Red;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(63, 239);
+            this.btnCancel.Location = new System.Drawing.Point(61, 210);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(161, 36);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Thoát";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // linkQuenMK
+            // 
+            this.linkQuenMK.AutoSize = true;
+            this.linkQuenMK.BackColor = System.Drawing.Color.LightCyan;
+            this.linkQuenMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkQuenMK.Location = new System.Drawing.Point(205, 273);
+            this.linkQuenMK.Name = "linkQuenMK";
+            this.linkQuenMK.Size = new System.Drawing.Size(131, 20);
+            this.linkQuenMK.TabIndex = 7;
+            this.linkQuenMK.TabStop = true;
+            this.linkQuenMK.Text = "Quên mật khẩu?";
+            this.linkQuenMK.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkQuenMK_LinkClicked);
             // 
             // Login
             // 
@@ -126,6 +140,7 @@
             this.BackgroundImage = global::PresentationLayer.Properties.Resources.login;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(536, 321);
+            this.Controls.Add(this.linkQuenMK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtMatKhau);
@@ -153,6 +168,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.LinkLabel linkQuenMK;
     }
 }
 

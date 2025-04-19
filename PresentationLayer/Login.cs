@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using BusinessLayer;
 using TransferObject;
+using System.Security.Cryptography;
 
 namespace PresentationLayer
 {
@@ -22,6 +23,24 @@ namespace PresentationLayer
 
         NguoiDungBL nguoidungBL = new NguoiDungBL();
 
+        //Hàm băm mật khẩu
+        public string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(password);
+                byte[] hashBytes = sha256.ComputeHash(bytes);
+
+                // Chuyển mảng byte thành chuỗi hex
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in hashBytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+
+                return builder.ToString();
+            }
+        }
         private void Login_Load(object sender, EventArgs e)
         {
 
@@ -35,7 +54,7 @@ namespace PresentationLayer
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string tenDangNhap = txtTenDN.Text.Trim();
-            string matKhau = txtMatKhau.Text.Trim();
+            string matKhau = HashPassword(txtMatKhau.Text.Trim());
 
             if (string.IsNullOrEmpty(tenDangNhap) || string.IsNullOrEmpty(matKhau))
             {
@@ -84,6 +103,14 @@ namespace PresentationLayer
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void linkQuenMK_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            ForgotPassword FrmQuenMK = new ForgotPassword();
+            FrmQuenMK.ShowDialog();
+            this.Show();
         }
     }
 }

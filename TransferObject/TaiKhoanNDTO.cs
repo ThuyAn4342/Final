@@ -15,8 +15,7 @@ namespace TransferObject
         public string soDT { get; set; }    
         public string matKhau { get; set; }
         public string linkAnh { get; set; }
-
-
+        public string mail { get; set; }
 
     }
 }
