@@ -13,6 +13,27 @@ namespace DataLayer
     {
         DataProvider provider = new DataProvider();
 
+        public List<HoaDonTO> GetHoaDonList()
+        {
+            string sql = "SELECT * FROM HoaDon";
+            DataTable dt = provider.MyExecuteReader(sql, CommandType.Text);
+            List<HoaDonTO> list = new List<HoaDonTO>();
+            foreach (DataRow row in dt.Rows)
+            {
+                HoaDonTO hd = new HoaDonTO
+                {
+                    maHD = Convert.ToInt32(row["maHD"]),
+                    ngayLapHD = Convert.ToDateTime(row["ngayLapHD"]),
+                    soLuongVe = Convert.ToInt32(row["soLuongVe"]),
+                    tongTien = Convert.ToDouble(row["tongTien"]),
+                    phuongThucTT = row["phuongThucTT"].ToString(),
+                    maND = Convert.ToInt32(row["maND"]),
+
+                };
+                list.Add(hd);
+            }
+            return list;
+        }
         public HoaDonTO GetThongTinHoaDon(int maHD)
         {
             SqlParameter[] param = { new SqlParameter("@maHD", maHD) };

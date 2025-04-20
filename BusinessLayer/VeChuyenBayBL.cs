@@ -13,6 +13,10 @@ namespace BusinessLayer
     {
         private VeChuyenBayDL veCBDL = new VeChuyenBayDL();
 
+        public List<VeChuyenBayTO> GetVeChuyenBayList()
+        {
+            return veCBDL.GetVeChuyenBayList();
+        }
         public VeChuyenBayTO GetThongTinVeChuyenBayBL(int maVe)
         {
             return veCBDL.GetThongTinVeChuyenBayDL(maVe);

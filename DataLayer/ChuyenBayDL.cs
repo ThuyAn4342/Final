@@ -137,5 +137,16 @@ namespace DataLayer
                 throw ex;
             }
         }
+
+        public bool UpdateTienTrinh(int maCB, byte tienTrinhID)
+        {
+            string sql = "UPDATE ChuyenBay SET tienTrinhID = @tienTrinhID WHERE maCB = @maCB";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maCB", maCB),
+                new SqlParameter("@tienTrinhID", tienTrinhID)
+            };
+            return dataProvider.MyExecuteNonQuery(sql, CommandType.Text, parameters) > 0;
+        }
     }
 }

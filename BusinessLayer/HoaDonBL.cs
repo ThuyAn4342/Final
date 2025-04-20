@@ -13,6 +13,12 @@ namespace BusinessLayer
     {
         private HoaDonDL hoadonDL = new HoaDonDL();
 
+        // Lấy danh sách hóa đơn
+        public List<HoaDonTO> GetHoaDonList()
+        {
+            return hoadonDL.GetHoaDonList();
+        }
+
         //Lấy hóa đơn từ mã hóa đơn
         public HoaDonTO GetThongTinHoaDon(int maHD)
         {

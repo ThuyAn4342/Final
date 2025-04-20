@@ -87,5 +87,17 @@ namespace BusinessLayer
                 throw ex;
             }
         }
+
+        public bool UpdateTienTrinh(int maCB, byte tienTrinhID)
+        {
+            try
+            {
+                return chuyenBayDL.UpdateTienTrinh(maCB, tienTrinhID);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

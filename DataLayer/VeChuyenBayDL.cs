@@ -13,6 +13,28 @@ namespace DataLayer
     {
         private DataProvider provider = new DataProvider();
 
+        public List<VeChuyenBayTO> GetVeChuyenBayList()
+        {
+            string sql = "SELECT * FROM VeChuyenBay";
+            DataTable dt = provider.MyExecuteReader(sql, CommandType.Text);
+            List<VeChuyenBayTO> list = new List<VeChuyenBayTO>();
+            foreach (DataRow row in dt.Rows)
+            {
+                VeChuyenBayTO ve = new VeChuyenBayTO
+                {
+                    maVe = Convert.ToInt32(row["maVe"]),
+                    tenHK = row["tenHK"].ToString(),
+                    maHD = Convert.ToInt32(row["maHD"]),
+                    maCB = Convert.ToInt32(row["maCB"]),
+                    maGhe = Convert.ToInt32(row["maGhe"]),
+                    gia = Convert.ToDouble(row["giaVe"]),
+                    
+                };
+                list.Add(ve);
+            }
+            return list;
+        }
+
         public string sanBayDiCuaVe(int maCB)
         {
             string sql_sb = "SELECT sb.tenSB AS sanBayDi  FROM ChuyenBay cb, TuyenBay tb, SanBay sb  WHERE cb.maTB=tb.maTB AND tb.sanBayDi =sb.maSB AND cb.maCB = @maCB";
