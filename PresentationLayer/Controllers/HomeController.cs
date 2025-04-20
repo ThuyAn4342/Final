@@ -30,6 +30,7 @@ namespace PresentationLayer.Controllers
         NguoiDungBL nguoidungBL = new NguoiDungBL();
 
         ChucNangBL chucnangBL = new ChucNangBL();
+        ChuyenBayBL chuyenbayBL = new ChuyenBayBL();
         private void LoadThongTinUser(TaiKhoanNDTO User)
         {
             //Load combobox chức năng
@@ -66,6 +67,21 @@ namespace PresentationLayer.Controllers
             {
                 LoadThongTinUser(CurrentUserTO.TaiKhoan);
             }
+
+            // Thiết lập định dạng cho DateTimePicker
+            datetimeNgayBay.Format = DateTimePickerFormat.Custom;
+            datetimeNgayBay.CustomFormat = "MM/yyyy";
+            datetimeNgayBay.ShowUpDown = true;
+
+            DgvLoad();
+
+        }
+
+        private void DgvLoad()
+        {
+            dgvLichBay.DataSource = chuyenbayBL.GetChuyenBayListByNgay(datetimeNgayBay.Value);
+            dgvLichBay.Columns["MaTB"].Visible = false;
+            dgvLichBay.Columns["TienTrinhID"].Visible = false;
         }
 
         private void btnChonAnh_Click(object sender, EventArgs e)
@@ -156,6 +172,11 @@ namespace PresentationLayer.Controllers
         private void btnHuyThaoTac_Click(object sender, EventArgs e)
         {
             LoadThongTinUser(CurrentUserTO.TaiKhoan);
+        }
+
+        private void btnTimKiemLB_Click(object sender, EventArgs e)
+        {
+            DgvLoad();
         }
     }
 }

@@ -34,11 +34,22 @@ namespace BusinessLayer
                          };
             return result.ToList();
         }
+
+        public List<ViewChuyenBayTO> GetChuyenBayListByNgay(DateTime date)
+        {
+            var data = this.GetChuyenBayList();
+
+            var result = from item in data
+                         where item.NgayGioDi.Month == date.Month && item.NgayGioDi.Year == date.Year
+                         select item;
+
+            return result.ToList();
+        }
         public bool AddChuyenBay(int maTB, DateTime ngayGioDi, int thoiGianBay, byte tienTrinhID)
         {
             return chuyenBayDL.AddChuyenBay(maTB, ngayGioDi, thoiGianBay, tienTrinhID);
         }
-
+        
         public bool DeleteChuyenBay(int maCB)
         {
             return chuyenBayDL.DeleteChuyenBay(maCB);
