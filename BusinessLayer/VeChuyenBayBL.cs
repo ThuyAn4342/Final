@@ -1,6 +1,7 @@
 ﻿using DataLayer;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,19 @@ namespace BusinessLayer
         public bool DeleteVeCB(int maVe)
         {
             return veCBDL.DeleteVeCB(maVe);
+        }
+
+        public bool DeleteVeByMaCB(int maCB)
+        {
+            try
+            {
+                return veCBDL.DeleteVeByMaCB(maCB);
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

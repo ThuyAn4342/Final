@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TransferObject;
 using DataLayer;
+using System.Data.SqlClient;
+
 namespace BusinessLayer
 {
     public class ChuyenBayBL
@@ -71,6 +73,19 @@ namespace BusinessLayer
         public bool CheckChuyenBayExists(int maTB, DateTime ngayGioDi)
         {
             return chuyenBayDL.CheckChuyenBayExists(maTB, ngayGioDi);
+        }
+
+        public bool DeleteGhe_ChuyenBay(int maCB)
+        {
+            try
+            {
+                return chuyenBayDL.DeleteGhe_ChuyenBay(maCB);
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

@@ -81,5 +81,23 @@ namespace DataLayer
             return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
         }
 
+        //Xóa vé theo mã chuyến bay
+        public bool DeleteVeByMaCB(int maCB)
+        {
+            try
+            {
+                string sql = "DELETE FROM VeChuyenBay WHERE maVe IN (SELECT v.maVe  FROM VeChuyenBay v, Ghe_ChuyenBay gcb " +
+                " WHERE v.maGhe = gcb.maGhe AND v.maCB = gcb.maCB AND gcb.maCB =@maCB)";
+                SqlParameter[] param = { new SqlParameter("@maCB", maCB) };
+                return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
     }
 }
