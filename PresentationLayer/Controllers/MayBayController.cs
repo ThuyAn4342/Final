@@ -174,6 +174,9 @@ namespace PresentationLayer.Controllers
 
         private void dgvDSMayBay_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Đảm bảo không click vào header
+            if (e.RowIndex < 0) return;
+
             // Nếu click vào cột Delete
             if (e.ColumnIndex == dgvDSMayBay.Columns["btnDelete"].Index)
             {
@@ -192,11 +195,6 @@ namespace PresentationLayer.Controllers
                         MessageBox.Show("Không thể xóa máy bay!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            }
-            else
-            {
-                // Đảm bảo không click vào header
-                if (e.RowIndex < 0) return;
             }
             if (dgvDSMayBay.SelectedRows.Count > 0)
             {

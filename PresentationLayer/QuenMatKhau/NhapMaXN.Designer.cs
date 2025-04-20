@@ -58,7 +58,7 @@
             this.btnXacNhan.Location = new System.Drawing.Point(311, 198);
             this.btnXacNhan.Name = "btnXacNhan";
             this.btnXacNhan.Size = new System.Drawing.Size(183, 39);
-            this.btnXacNhan.TabIndex = 8;
+            this.btnXacNhan.TabIndex = 1;
             this.btnXacNhan.Text = "Xác nhận";
             this.btnXacNhan.UseVisualStyleBackColor = false;
             this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
@@ -70,7 +70,7 @@
             this.txtMaXacNhan.Location = new System.Drawing.Point(166, 127);
             this.txtMaXacNhan.Name = "txtMaXacNhan";
             this.txtMaXacNhan.Size = new System.Drawing.Size(205, 30);
-            this.txtMaXacNhan.TabIndex = 7;
+            this.txtMaXacNhan.TabIndex = 0;
             // 
             // label2
             // 

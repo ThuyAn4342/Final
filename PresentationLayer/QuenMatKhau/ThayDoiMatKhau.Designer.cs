@@ -59,7 +59,7 @@
             this.btnLuu.Location = new System.Drawing.Point(344, 193);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(149, 39);
-            this.btnLuu.TabIndex = 8;
+            this.btnLuu.TabIndex = 2;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
@@ -71,7 +71,7 @@
             this.txtMatKhauMoi.Location = new System.Drawing.Point(148, 55);
             this.txtMatKhauMoi.Name = "txtMatKhauMoi";
             this.txtMatKhauMoi.Size = new System.Drawing.Size(228, 30);
-            this.txtMatKhauMoi.TabIndex = 7;
+            this.txtMatKhauMoi.TabIndex = 0;
             // 
             // label2
             // 
@@ -91,7 +91,7 @@
             this.txtNhapLaiMK.Location = new System.Drawing.Point(148, 140);
             this.txtNhapLaiMK.Name = "txtNhapLaiMK";
             this.txtNhapLaiMK.Size = new System.Drawing.Size(228, 30);
-            this.txtNhapLaiMK.TabIndex = 11;
+            this.txtNhapLaiMK.TabIndex = 1;
             // 
             // label1
             // 
