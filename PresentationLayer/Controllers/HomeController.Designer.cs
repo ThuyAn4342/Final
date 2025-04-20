@@ -40,6 +40,8 @@
             this.pnBieuDo = new System.Windows.Forms.Panel();
             this.tabThongTinTK = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtMail = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnChonAnh = new System.Windows.Forms.Button();
             this.btnHuyThaoTac = new System.Windows.Forms.Button();
             this.btnCapNhatTT = new System.Windows.Forms.Button();
@@ -60,8 +62,6 @@
             this.lbTenTK = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.picAvatar = new System.Windows.Forms.PictureBox();
-            this.txtMail = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabLichBay.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -242,6 +242,32 @@
             this.panel2.Size = new System.Drawing.Size(676, 624);
             this.panel2.TabIndex = 93;
             // 
+            // txtMail
+            // 
+            this.txtMail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMail.ForeColor = System.Drawing.Color.Navy;
+            this.txtMail.Location = new System.Drawing.Point(190, 379);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(402, 30);
+            this.txtMail.TabIndex = 109;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Navy;
+            this.label6.Location = new System.Drawing.Point(35, 382);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(117, 25);
+            this.label6.TabIndex = 108;
+            this.label6.Text = "Địa chỉ mail:";
+            // 
             // btnChonAnh
             // 
             this.btnChonAnh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -254,6 +280,7 @@
             this.btnChonAnh.TabIndex = 107;
             this.btnChonAnh.Text = "Chọn";
             this.btnChonAnh.UseVisualStyleBackColor = false;
+            this.btnChonAnh.Click += new System.EventHandler(this.btnChonAnh_Click);
             // 
             // btnHuyThaoTac
             // 
@@ -266,6 +293,7 @@
             this.btnHuyThaoTac.TabIndex = 106;
             this.btnHuyThaoTac.Text = "Hủy thao tác";
             this.btnHuyThaoTac.UseVisualStyleBackColor = false;
+            this.btnHuyThaoTac.Click += new System.EventHandler(this.btnHuyThaoTac_Click);
             // 
             // btnCapNhatTT
             // 
@@ -278,6 +306,7 @@
             this.btnCapNhatTT.TabIndex = 105;
             this.btnCapNhatTT.Text = "Cập nhật";
             this.btnCapNhatTT.UseVisualStyleBackColor = false;
+            this.btnCapNhatTT.Click += new System.EventHandler(this.btnCapNhatTT_Click);
             // 
             // txtLinkAnh
             // 
@@ -486,32 +515,6 @@
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picAvatar.TabIndex = 38;
             this.picAvatar.TabStop = false;
-            // 
-            // txtMail
-            // 
-            this.txtMail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMail.ForeColor = System.Drawing.Color.Navy;
-            this.txtMail.Location = new System.Drawing.Point(190, 379);
-            this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(402, 30);
-            this.txtMail.TabIndex = 109;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Navy;
-            this.label6.Location = new System.Drawing.Point(35, 382);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 25);
-            this.label6.TabIndex = 108;
-            this.label6.Text = "Địa chỉ mail:";
             // 
             // HomeController
             // 
