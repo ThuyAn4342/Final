@@ -118,6 +118,13 @@ namespace PresentationLayer.Controllers
             var thoiGianBay = txtThoiGianBay.Text;
             var datetime = datetimeThemTB.Value;
 
+
+            if (chuyenBayBL.CheckChuyenBayExists(Convert.ToInt32(maTB), datetime))
+            {
+                MessageBox.Show("Đã tồn tại chuyến bay");
+                return;
+            }
+
             chuyenBayBL.UpdateChuyenBay(Convert.ToInt32(maCB), Convert.ToInt32(maTB), datetime,
                 Convert.ToInt32(thoiGianBay), Convert.ToByte(tienTrinh));
             MessageBox.Show("Cập nhật chuyến bay thành công.");
