@@ -18,22 +18,6 @@ namespace BusinessLayer
             return quyDinhDL.GetQuyDinhList();
         }
 
-        // Thêm quy định mới
-        public bool AddQuyDinh(string tenQD, int noiDungQD)
-        {
-            if (!quyDinhDL.IsQuyDinhExist(tenQD))
-            {
-                DateTime ngayCapNhat = DateTime.Now;
-                return quyDinhDL.AddQuyDinh(tenQD, noiDungQD);
-            }
-            return false;
-        }
-
-        // Xóa quy định theo mã
-        public bool XoaQuyDinh(int maQD)
-        {
-            return quyDinhDL.DeleteQuyDinh(maQD);
-        }
 
         // Gọi hàm cập nhật từ DL
         public bool UpdateQuyDinh(int maQD, string tenQD, int noiDungQD)

@@ -31,7 +31,6 @@
             this.btnHuyThemQD = new System.Windows.Forms.Button();
             this.txtNoiDungQD = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnThemQD = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTenQuyDinh = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -46,9 +45,9 @@
             this.btnHuyThemQD.BackColor = System.Drawing.Color.Red;
             this.btnHuyThemQD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuyThemQD.ForeColor = System.Drawing.Color.White;
-            this.btnHuyThemQD.Location = new System.Drawing.Point(38, 575);
+            this.btnHuyThemQD.Location = new System.Drawing.Point(559, 558);
             this.btnHuyThemQD.Name = "btnHuyThemQD";
-            this.btnHuyThemQD.Size = new System.Drawing.Size(117, 34);
+            this.btnHuyThemQD.Size = new System.Drawing.Size(135, 54);
             this.btnHuyThemQD.TabIndex = 123;
             this.btnHuyThemQD.Text = "Hủy";
             this.btnHuyThemQD.UseVisualStyleBackColor = false;
@@ -76,19 +75,6 @@
             this.label1.Size = new System.Drawing.Size(190, 29);
             this.label1.TabIndex = 119;
             this.label1.Text = "Quản lý quy định";
-            // 
-            // btnThemQD
-            // 
-            this.btnThemQD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnThemQD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemQD.ForeColor = System.Drawing.Color.White;
-            this.btnThemQD.Location = new System.Drawing.Point(972, 575);
-            this.btnThemQD.Name = "btnThemQD";
-            this.btnThemQD.Size = new System.Drawing.Size(117, 34);
-            this.btnThemQD.TabIndex = 118;
-            this.btnThemQD.Text = "Thêm";
-            this.btnThemQD.UseVisualStyleBackColor = false;
-            this.btnThemQD.Click += new System.EventHandler(this.btnThemQD_Click);
             // 
             // label5
             // 
@@ -146,9 +132,9 @@
             this.btnCapNhatQD.BackColor = System.Drawing.Color.Blue;
             this.btnCapNhatQD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapNhatQD.ForeColor = System.Drawing.Color.White;
-            this.btnCapNhatQD.Location = new System.Drawing.Point(486, 575);
+            this.btnCapNhatQD.Location = new System.Drawing.Point(385, 558);
             this.btnCapNhatQD.Name = "btnCapNhatQD";
-            this.btnCapNhatQD.Size = new System.Drawing.Size(134, 34);
+            this.btnCapNhatQD.Size = new System.Drawing.Size(152, 54);
             this.btnCapNhatQD.TabIndex = 126;
             this.btnCapNhatQD.Text = "Cập nhật";
             this.btnCapNhatQD.UseVisualStyleBackColor = false;
@@ -178,7 +164,6 @@
             this.Controls.Add(this.btnHuyThemQD);
             this.Controls.Add(this.txtNoiDungQD);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnThemQD);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtTenQuyDinh);
             this.Controls.Add(this.label6);
@@ -198,7 +183,6 @@
         private System.Windows.Forms.Button btnHuyThemQD;
         private System.Windows.Forms.TextBox txtNoiDungQD;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnThemQD;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTenQuyDinh;
         private System.Windows.Forms.Label label6;

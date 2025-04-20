@@ -33,44 +33,12 @@ namespace PresentationLayer.Controllers
             dgvQuyDinh.Columns["tenQD"].HeaderText = "Tên quy định";
             dgvQuyDinh.Columns["noidungQD"].HeaderText = "Nội dung quy định";
             dgvQuyDinh.Columns["ngayCapNhat"].HeaderText = "Ngày cập nhật";
-            //Cột DELETE
-            Helper.AddDeleteColumn(dgvQuyDinh);
+
         }
 
         private void QuyDinhController_Load(object sender, EventArgs e)
         {
             LoadQuyDinh();
-        }
-
-        private void btnThemQD_Click(object sender, EventArgs e)
-        {
-            // Kiểm tra rỗng
-            if (!Helper.IsAllNotEmpty(
-                (txtTenQuyDinh, "Tên quy định"),
-                (txtNoiDungQD, "Nội dung quy định")))
-            {
-                return;
-            }
-            string tenQuyDinh = txtTenQuyDinh.Text.Trim();
-
-            // Kiểm tra nội dung có phải là số nguyên
-            int noiDungQD;
-            if (!Helper.TryGetIntFromTextBox(txtNoiDungQD, out noiDungQD, "Nội dung quy định"))
-            {
-                return;
-            }
-
-            // Gọi Business Layer để thêm
-            if (quyDinhBL.AddQuyDinh(tenQuyDinh, noiDungQD))
-            {
-                MessageBox.Show("Thêm quy định thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dgvQuyDinh.DataSource = quyDinhBL.GetQuyDinhList(); // Hoặc LoadQuyDinh() nếu bạn có
-                Helper.CancelInput(txtTenQuyDinh, txtNoiDungQD);
-            }
-            else
-            {
-                MessageBox.Show("Tên quy định đã tồn tại hoặc thông tin không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void btnCapNhatQD_Click(object sender, EventArgs e)
@@ -126,31 +94,9 @@ namespace PresentationLayer.Controllers
 
         private void dgvQuyDinh_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra người dùng có click vào cột Delete không
-            if (e.RowIndex >= 0 && e.ColumnIndex == dgvQuyDinh.Columns["btnDelete"].Index)
-            {
-                // Lấy mã sân bay từ dòng được chọn
-                int maSB = Convert.ToInt32(dgvQuyDinh.Rows[e.RowIndex].Cells["maQD"].Value);
+            // Đảm bảo không click vào header
+            if (e.RowIndex < 0) return;
 
-                DialogResult result = MessageBox.Show("Bạn có chắc muốn xoá quy định này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
-                {
-                    if (quyDinhBL.XoaQuyDinh(maSB)) // gọi đến tầng Business
-                    {
-                        MessageBox.Show("Đã xoá thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvQuyDinh.DataSource = quyDinhBL.GetQuyDinhList(); // Load lại danh sách
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không thể xóa quy định!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                // Đảm bảo không click vào header
-                if (e.RowIndex < 0) return;
-            }
             if (dgvQuyDinh.SelectedRows.Count > 0)
             {
                 // Lấy dòng được click

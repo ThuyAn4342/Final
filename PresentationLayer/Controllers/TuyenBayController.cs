@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -91,33 +92,53 @@ namespace PresentationLayer.Controllers
         // Sân bay trung gian
         private void btnThemSBTG_Click(object sender, EventArgs e)
         {
-            var maSB = cbMaSB.SelectedValue;
-            var maTB = cbMaTB.SelectedValue;
-            var thoiGianDung = txtThoiGianDung.Text;
-
-            if (maSB == null || maTB == null)
+            try
             {
-                MessageBox.Show("Vui lòng chọn sân bay và tuyến bay", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                if (cbMaSB.SelectedValue == null || cbMaTB.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn sân bay và tuyến bay.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            if (txtThoiGianDung.Text == string.Empty)
+                if (string.IsNullOrWhiteSpace(txtThoiGianDung.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập thời gian dừng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int maSB = Convert.ToInt32(cbMaSB.SelectedValue);
+                int maTB = Convert.ToInt32(cbMaTB.SelectedValue);
+
+                if (!int.TryParse(txtThoiGianDung.Text, out int thoiGianDung))
+                {
+                    MessageBox.Show("Thời gian dừng phải là số nguyên.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                bool ketQua = sanBayTrungGianBL.AddSanBayTrungGian(maSB, maTB, thoiGianDung);
+
+                if (ketQua)
+                {
+                    MessageBox.Show("Thêm sân bay trung gian thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Sân bay đã tồn tại trong tuyến bay này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (SqlException sqlEx)
             {
-                MessageBox.Show("Vui lòng nhập thời gian dừng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                // Thông báo lỗi chi tiết từ trigger
+                MessageBox.Show($"Lỗi từ hệ thống: {sqlEx.Message}", "Lỗi SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (sanBayTrungGianBL.AddSanBayTrungGian((int)maSB, (int)maTB, Convert.ToInt32(thoiGianDung)))
+            catch (Exception ex)
             {
-                MessageBox.Show("Thêm sân bay trung gian thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
+            finally
             {
-                MessageBox.Show("Sân bay đã tồn tại trong tuyến bay này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dgvSBTrungGian.DataSource = sanBayTrungGianBL.GetSanBayTrungGianList();
             }
-            dgvSBTrungGian.DataSource = sanBayTrungGianBL.GetSanBayTrungGianList();
-
-
         }
 
         // Danh sách tuyến bay

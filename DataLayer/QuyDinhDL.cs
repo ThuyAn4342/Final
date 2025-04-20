@@ -45,21 +45,6 @@ namespace DataLayer
             return Convert.ToInt32(result) > 0;
         }
 
-
-        //Thêm quy định mới
-        //Thêm quy định mới (ngày cập nhật lấy DateTime.Now)
-        public bool AddQuyDinh(string tenQD, int noidungQD)
-        {
-            string sql = "INSERT INTO QUYDINH (tenQD, noidungQD, ngayCapNhat) VALUES (@tenQD, @noidungQD, @ngayCapNhat)";
-            SqlParameter[] param =
-            {
-                new SqlParameter("@tenQD", tenQD),
-                new SqlParameter("@noidungQD", noidungQD),
-                new SqlParameter("@ngayCapNhat", DateTime.Now)
-            };
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
-        }
-
         // Cập nhật quy định
         public bool UpdateQuyDinh(int maQD, string tenQD, int noiDungQD)
         {
@@ -75,14 +60,16 @@ namespace DataLayer
             return provider.MyExecuteNonQuery(sql, CommandType.Text, parameters) > 0;
         }
 
-
-        //Xóa quy định
-        public bool DeleteQuyDinh(int quyDinhID)
+        public int GetNoiDungQDByTen(string tenQD)
         {
-            string sql = "DELETE FROM QuyDinh WHERE maQD = @ID";
-            SqlParameter[] param = { new SqlParameter("@ID", quyDinhID) };
+            string sql = "SELECT noidungQD FROM QuyDinh WHERE tenQD = @tenQD";
+            SqlParameter[] parameters = {
+                new SqlParameter("@tenQD", tenQD)
+            };
 
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+            object result = provider.MyExecuteScalar(sql, CommandType.Text, parameters);
+            return result != null ? Convert.ToInt32(result) : 0;
         }
+
     }
 }
