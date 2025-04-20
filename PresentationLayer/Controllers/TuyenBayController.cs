@@ -28,7 +28,6 @@ namespace PresentationLayer.Controllers
             // Ẩn các cột maSB
             dgvTuyenBay.Columns["MaSanBayDi"].Visible = false;
             dgvTuyenBay.Columns["MaSanBayDen"].Visible = false;
-            dgvTuyenBay.Columns["Delete"].DisplayIndex = dgvTuyenBay.Columns.Count - 1;
 
             // Set ComboBox for Sân bay đi
             cbSanBayDi.DataSource = sanBayBL.GetSanBayList();
@@ -206,7 +205,11 @@ namespace PresentationLayer.Controllers
             var sbDen = cbSanBayDen.SelectedValue;
             var tenTB = txtTenTB.Text;
             var giaTB = txtGiaTB.Text;
-
+            if (tuyenBayBL.CheckTuyenBayExists(tenTB))
+            {
+                MessageBox.Show("Tuyến bay đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             tuyenBayBL.UpdateTuyenBay(Convert.ToInt32(maTB), tenTB, (int)sbDi, (int)sbDen, float.Parse(giaTB));
             MessageBox.Show("Cập nhật thành công");
 
@@ -226,10 +229,19 @@ namespace PresentationLayer.Controllers
         {
             this.Clear();
         }
-
-   
-
         private void dgvTuyenBay_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvTuyenBay.SelectedRows.Count != 0)
+            {
+                txtGiaTB.Text = dgvTuyenBay.Rows[e.RowIndex].Cells["GiaTB"].Value.ToString();
+                txtTenTB.Text = dgvTuyenBay.Rows[e.RowIndex].Cells["TenTB"].Value.ToString();
+                cbSanBayDi.SelectedValue = dgvTuyenBay.Rows[e.RowIndex].Cells["MaSanBayDi"].Value;
+                cbSanBayDen.SelectedValue = dgvTuyenBay.Rows[e.RowIndex].Cells["MaSanBayDen"].Value;
+            }
+
+        }
+
+        private void dgvSBTrungGian_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvSBTrungGian.Columns["Delete_TrungGian"].Index && e.RowIndex >= 0)
             {
@@ -237,7 +249,7 @@ namespace PresentationLayer.Controllers
                 var maSB = dgvSBTrungGian.Rows[e.RowIndex].Cells["maSB"].Value;
                 if (maTB != null && maSB != null)
                 {
-                    var confirm = MessageBox.Show($"Bạn có chắc muốn xóa sân bay", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    var confirm = MessageBox.Show($"Bạn có chắc muốn xóa sân bay trung gian", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (confirm == DialogResult.Yes)
                     {
                         sanBayTrungGianBL.DeleteSanBayTrungGian(Convert.ToInt32(maSB), Convert.ToInt32(maTB));
@@ -249,15 +261,6 @@ namespace PresentationLayer.Controllers
             {
                 if (e.RowIndex < 0) return;
             }
-
-            if (dgvTuyenBay.SelectedRows.Count != 0)
-            {
-                txtGiaTB.Text = dgvTuyenBay.Rows[e.RowIndex].Cells["GiaTB"].Value.ToString();
-                txtTenTB.Text = dgvTuyenBay.Rows[e.RowIndex].Cells["TenTB"].Value.ToString();
-                cbSanBayDi.SelectedValue = dgvTuyenBay.Rows[e.RowIndex].Cells["MaSanBayDi"].Value;
-                cbSanBayDen.SelectedValue = dgvTuyenBay.Rows[e.RowIndex].Cells["MaSanBayDen"].Value;
-            }
-
         }
     }
 }
