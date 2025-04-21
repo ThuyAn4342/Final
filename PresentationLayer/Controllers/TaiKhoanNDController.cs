@@ -313,5 +313,20 @@ namespace PresentationLayer.Controllers
                 txtMail.Text = row.Cells["mail_Admin"].Value.ToString();
             }
         }
+
+        private void btnChonAnh_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string Path = openFileDialog.FileName;
+
+                // Gán vào textbox đường dẫn
+                txtAnhDaiDien.Text = Path;
+           
+            }
+        }
     }
 }

@@ -17,15 +17,14 @@ namespace DataLayer
         //Login
         public TaiKhoanNDTO Login( string tenDangNhap, string matKhau)
         {
-            string sql = "SELECT * FROM NguoiDung " +
-                "WHERE tenDangNhap = @tenDangNhap  AND matKhau = @matKhau";
+            string sql = "sp_Login";
             SqlParameter[] param = { new SqlParameter("@tenDangNhap", tenDangNhap),
                                      new SqlParameter("@matKhau", matKhau)};
 
            
             try
             {
-                DataTable dt = provider.MyExecuteReader(sql, CommandType.Text, param);
+                DataTable dt = provider.MyExecuteReader(sql, CommandType.StoredProcedure, param);
                 if (dt.Rows.Count > 0)
                 {
                     DataRow row = dt.Rows[0];
@@ -51,15 +50,15 @@ namespace DataLayer
             }
         }
 
-        //Lấy username khi có tên đăng nhập
-        public string GetEmailByUsername(string username)
+        //Lấy mail khi có tên đăng nhập
+        public string GetEmailByUsername(string tenDangNhap)
         {
-            string sql = "SELECT mail FROM NguoiDung WHERE tenDangNhap = @username";
+            string sql = "sp_GetEmailByUsername";
             SqlParameter[] parameters = {
-                new SqlParameter("@username", username)
+                new SqlParameter("@tenDangNhap", tenDangNhap)
             };
 
-            DataTable dt = provider.MyExecuteReader(sql, CommandType.Text, parameters);
+            DataTable dt = provider.MyExecuteReader(sql, CommandType.StoredProcedure, parameters);
             if (dt.Rows.Count > 0)
             {
                 return dt.Rows[0]["mail"].ToString();
@@ -74,14 +73,10 @@ namespace DataLayer
         {
             try
             {
-                if (ChucNangId == 0)
-                {
-                    string sql_all = "SELECT * FROM NguoiDung";
-                    return provider.MyExecuteReader(sql_all, CommandType.Text);
-                }
-                string sql = "SELECT * FROM NguoiDung WHERE ChucNangId = @ChucNangId";
+               
+                string sql = "sp_LayDSNguoiDungTheoChucNang";
                 SqlParameter[] param = { new SqlParameter("@ChucNangId", ChucNangId) };
-                return provider.MyExecuteReader(sql, CommandType.Text, param);
+                return provider.MyExecuteReader(sql, CommandType.StoredProcedure, param);
             }
             catch (SqlException ex)
             {
@@ -93,10 +88,14 @@ namespace DataLayer
         //Lấy người dùng qua id
         public TaiKhoanNDTO GetNguoiDungByID(int id)
         {
-            string sql = "SELECT * FROM NguoiDung WHERE maND = " + id;
+            string sql = "sp_LayNguoiDungQuaId" ;
+            SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@id",id)
+                };
             try
             {
-                DataTable dt = provider.MyExecuteReader(sql, CommandType.Text);
+                DataTable dt = provider.MyExecuteReader(sql, CommandType.StoredProcedure, parameters);
                 if (dt.Rows.Count > 0)
                 {
                     DataRow row = dt.Rows[0];
@@ -125,10 +124,10 @@ namespace DataLayer
         //Kiểm tra tên đăng nhập đã tồn tại hay chưa
         public bool KiemTraTenDangNhapTonTai(string tenDangNhap)
         {
-            string sql = "SELECT COUNT(*) FROM NguoiDung WHERE TenDangNhap = @TenDangNhap";
+            string sql = "sp_KiemTraTenDNTonTai";
             SqlParameter[] parameters = { new SqlParameter("@TenDangNhap", tenDangNhap) };
 
-            int count = Convert.ToInt32(provider.MyExecuteScalar(sql, CommandType.Text, parameters));
+            int count = Convert.ToInt32(provider.MyExecuteScalar(sql, CommandType.StoredProcedure, parameters));
             return count > 0;
         }
 
@@ -138,8 +137,7 @@ namespace DataLayer
         {
             try
             {
-                string sql = "INSERT INTO NguoiDung (hoTenND, tenDangNhap, ChucNangId, soDT, matKhau, linkAnh, mail) " +
-               "VALUES(@hoTenND, @tenDangNhap, @ChucNangId, @soDT, @matKhau, @linkAnh, @mail)";
+                string sql = "sp_AddNguoiDung";
                 SqlParameter[] param = { new SqlParameter("@hoTenND", hoTenND),
                                      new SqlParameter("@tenDangNhap",tenDangNhap),
                                      new SqlParameter("@ChucNangId",ChucNangId),
@@ -149,7 +147,7 @@ namespace DataLayer
                                      new SqlParameter("@mail", mail)
             };
 
-                return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+                return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, param) > 0;
             }
             catch (SqlException ex)
             {
@@ -163,9 +161,9 @@ namespace DataLayer
         {
             try
             {
-                string sql = "DELETE FROM NguoiDung WHERE maND = @maND";
+                string sql = "sp_XoaNguoiDung";
                 SqlParameter[] param = { new SqlParameter("@maND", maND) };
-                return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+                return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, param) > 0;
 
             }
             catch (SqlException ex)
@@ -181,8 +179,7 @@ namespace DataLayer
         {
             try
             {
-                string sql = "UPDATE NguoiDung SET hoTenND =@hoTenND, tenDangNhap=@tenDangNhap, ChucNangId=@ChucNangId," +
-               " soDT = @soDT, matKhau=@matKhau, linkAnh=@linkAnh, mail=@mail WHERE maND =@maND";
+                string sql = "sp_CapNhatNguoiDung";
 
                 SqlParameter[] parameters = new SqlParameter[]
                 {
@@ -195,7 +192,7 @@ namespace DataLayer
                 new SqlParameter("@linkAnh", linkAnh),
                 new SqlParameter("@mail", mail)
                 };
-                return provider.MyExecuteNonQuery(sql, CommandType.Text, parameters) > 0;
+                return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, parameters) > 0;
             }
             catch (SqlException ex)
             {
@@ -205,13 +202,17 @@ namespace DataLayer
         }
 
        
-        //Lấy mail qua tên đăng nhập
-        public TaiKhoanNDTO GetNguoiDungByTenDN(string tenDN)
+        //Lấy user qua tên đăng nhập
+        public TaiKhoanNDTO GetNguoiDungByTenDN(string tenDangNhap)
         {
-            string sql = "SELECT * FROM NguoiDung WHERE tenDangNhap = '" + tenDN + "'";
+            string sql = "sp_LayNDQuaTenDN";
+            SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@tenDangNhap",tenDangNhap) 
+                };
             try
             {
-                DataTable dt = provider.MyExecuteReader(sql, CommandType.Text);
+                DataTable dt = provider.MyExecuteReader(sql, CommandType.StoredProcedure,parameters);
                 if (dt.Rows.Count > 0)
                 {
                     DataRow row = dt.Rows[0];
@@ -242,11 +243,11 @@ namespace DataLayer
         {
             try
             {
-                string sql = "UPDATE NguoiDung SET  matKhau=@matKhau WHERE tenDangNhap=@tenDangNhap" ;
+                string sql = "sp_DoiMatKhau";
                 SqlParameter[] param = { new SqlParameter("@tenDangNhap", tenDangNhap),
                                          new SqlParameter("@matKhau", matKhauMoi)};
 
-                return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+                return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, param) > 0;
             }
             catch (SqlException ex)
             {

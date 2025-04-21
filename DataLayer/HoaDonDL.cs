@@ -15,8 +15,8 @@ namespace DataLayer
 
         public List<HoaDonTO> GetHoaDonList()
         {
-            string sql = "SELECT * FROM HoaDon";
-            DataTable dt = provider.MyExecuteReader(sql, CommandType.Text);
+            string sql = "sp_LayDSHoaDon ";
+            DataTable dt = provider.MyExecuteReader(sql, CommandType.StoredProcedure);
             List<HoaDonTO> list = new List<HoaDonTO>();
             foreach (DataRow row in dt.Rows)
             {
@@ -68,7 +68,7 @@ namespace DataLayer
         //Cập nhật thông tin
         public bool UpdateHoaDon(int maHD, int soLuongVe,double tongTien)
         {
-            string sql = "UPDATE HoaDon SET soLuongVe =@soLuongVe, tongTien=@tongTien WHERE maHD =@maHD";
+            string sql = "sp_CapNhatHoaDon";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
@@ -76,15 +76,15 @@ namespace DataLayer
                 new SqlParameter("@soLuongVe", soLuongVe),
                 new SqlParameter("@tongTien",tongTien)
             };
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, parameters) > 0;
+            return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, parameters) > 0;
         }
 
         //Xóa hóa đơn
         public bool DeleteHoaDon(int maHD)
         {
-            string sql = "DELETE FROM HoaDon WHERE maHD = @maHD";
+            string sql = "sp_XoaHoaDon";
             SqlParameter[] param = { new SqlParameter("@maHD", maHD) };
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+            return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, param) > 0;
         }
     }
 

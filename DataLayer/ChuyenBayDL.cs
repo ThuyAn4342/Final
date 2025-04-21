@@ -72,43 +72,23 @@ namespace DataLayer
 
         public int GetSoLuongChuyenBay(int thang, int nam)
         {
-            string sql_Nam = "SELECT * FROM ChuyenBay WHERE YEAR(ngayGioDi) = " + @nam;
-            string sql_ThangNam = "SELECT * FROM ChuyenBay WHERE MONTH(ngayGioDi) = " + @thang+ " AND YEAR(ngayGioDi) = " + @nam;
-            
-            if (thang == 0 )
+            try
             {
-                DataTable dt_Nam = dataProvider.MyExecuteReader(sql_Nam, CommandType.Text);
-                List<ChuyenBayTO> list_Nam = new List<ChuyenBayTO>();
-                foreach (DataRow row in dt_Nam.Rows)
+                string sql = "sp_LayTongChuyenBay";
+
+                SqlParameter[] parameters = new SqlParameter[]
                 {
-                    ChuyenBayTO cb = new ChuyenBayTO
-                    {
-                        MaCB = Convert.ToInt32(row["maCB"]),
-                        MaTB = Convert.ToInt32(row["maTB"]),
-                        NgayGioDi = Convert.ToDateTime(row["ngayGioDi"]),
-                        ThoiGianBay = Convert.ToInt32(row["thoiGianBay"]),
-                        TienTrinhID = Convert.ToByte(row["tienTrinhID"])
-                    };
-                    list_Nam.Add(cb);
-                }  
-                return list_Nam.Count;
-            }   
-            DataTable dt_ThangNam = dataProvider.MyExecuteReader(sql_ThangNam, CommandType.Text);
-            List<ChuyenBayTO> list_ThangNam = new List<ChuyenBayTO>();
-            foreach (DataRow row in dt_ThangNam.Rows)
+                    new SqlParameter("@thang",thang == 0 ? (object)DBNull.Value : thang),
+                    new SqlParameter("@nam", nam)
+                };
+                var sl = dataProvider.MyExecuteScalar(sql, CommandType.StoredProcedure, parameters);
+                return Convert.ToInt32(sl);
+            }
+            catch (SqlException ex)
             {
-                 ChuyenBayTO cb = new ChuyenBayTO
-                    {
-                        MaCB = Convert.ToInt32(row["maCB"]),
-                        MaTB = Convert.ToInt32(row["maTB"]),
-                        NgayGioDi = Convert.ToDateTime(row["ngayGioDi"]),
-                        ThoiGianBay = Convert.ToInt32(row["thoiGianBay"]),
-                        TienTrinhID = Convert.ToByte(row["tienTrinhID"])
-                    };
-                list_ThangNam.Add(cb);
-            }  
-            return list_ThangNam.Count;
-            
+
+                throw ex;
+            }
         }
 
         public bool CheckChuyenBayExists(int maTB, DateTime ngayGioDi)

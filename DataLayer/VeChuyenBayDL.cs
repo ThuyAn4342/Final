@@ -15,8 +15,8 @@ namespace DataLayer
 
         public List<VeChuyenBayTO> GetVeChuyenBayList()
         {
-            string sql = "SELECT * FROM VeChuyenBay";
-            DataTable dt = provider.MyExecuteReader(sql, CommandType.Text);
+            string sql = "sp_LayDSVeChuyenBay";
+            DataTable dt = provider.MyExecuteReader(sql, CommandType.StoredProcedure);
             List<VeChuyenBayTO> list = new List<VeChuyenBayTO>();
             foreach (DataRow row in dt.Rows)
             {
@@ -37,16 +37,16 @@ namespace DataLayer
 
         public string sanBayDiCuaVe(int maCB)
         {
-            string sql_sb = "SELECT sb.tenSB AS sanBayDi  FROM ChuyenBay cb, TuyenBay tb, SanBay sb  WHERE cb.maTB=tb.maTB AND tb.sanBayDi =sb.maSB AND cb.maCB = @maCB";
+            string sql_sb = "sp_LaySanBayDi";
             SqlParameter[] param_sb = { new SqlParameter("@maCB", maCB) };
-            var sb = provider.MyExecuteScalar(sql_sb, CommandType.Text, param_sb);
+            var sb = provider.MyExecuteScalar(sql_sb, CommandType.StoredProcedure, param_sb);
             return sb.ToString();
         }
         public string sanBayDenCuaVe(int maCB)
         {
-            string sql_sb = "SELECT sb.tenSB AS sanBayDi  FROM ChuyenBay cb, TuyenBay tb, SanBay sb  WHERE cb.maTB=tb.maTB AND tb.sanBayDen =sb.maSB AND cb.maCB = @maCB";
+            string sql_sb = "sp_LaySanBayDen";
             SqlParameter[] param_sb = { new SqlParameter("@maCB", maCB) };
-            var sb = provider.MyExecuteScalar(sql_sb, CommandType.Text, param_sb);
+            var sb = provider.MyExecuteScalar(sql_sb, CommandType.StoredProcedure, param_sb);
             return sb.ToString();
         }
         public VeChuyenBayTO GetThongTinVeChuyenBayDL(int maVe)
@@ -98,9 +98,9 @@ namespace DataLayer
         //Xóa vé
         public bool DeleteVeCB(int maVe)
         {
-            string sql = "DELETE FROM VeChuyenBay WHERE maVe = @maVe";
+            string sql = "sp_XoaVeTheoMaVe";
             SqlParameter[] param = { new SqlParameter("@maVe", maVe) };
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+            return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, param) > 0;
         }
 
         //Xóa vé theo mã chuyến bay
@@ -108,10 +108,9 @@ namespace DataLayer
         {
             try
             {
-                string sql = "DELETE FROM VeChuyenBay WHERE maVe IN (SELECT v.maVe  FROM VeChuyenBay v, Ghe_ChuyenBay gcb " +
-                " WHERE v.maGhe = gcb.maGhe AND v.maCB = gcb.maCB AND gcb.maCB =@maCB)";
+                string sql = "sp_XoaVeCuaChuyenBay";
                 SqlParameter[] param = { new SqlParameter("@maCB", maCB) };
-                return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+                return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, param) > 0;
             }
             catch (SqlException ex)
             {
