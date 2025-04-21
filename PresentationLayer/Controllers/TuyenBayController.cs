@@ -213,7 +213,7 @@ namespace PresentationLayer.Controllers
             catch (SqlException ex)
             {
 
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Đã tồn tại tuyến bay");
             }
             
 
