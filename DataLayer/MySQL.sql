@@ -97,7 +97,7 @@ BEGIN
 END
 GO
 --Kiểm tra khóa ngoại ở Ghế khi xóa máy bay
-ALTER PROCEDURE sp_CheckForeignKey_MayBay
+CREATE PROCEDURE sp_CheckForeignKey_MayBay
     @maMB INT
 AS
 BEGIN
