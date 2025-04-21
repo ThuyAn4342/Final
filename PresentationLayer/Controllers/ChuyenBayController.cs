@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TransferObject;
 using BusinessLayer;
+using System.Data.SqlClient;
 namespace PresentationLayer.Controllers
 {
     public partial class ChuyenBayController : UserControl
@@ -121,15 +122,19 @@ namespace PresentationLayer.Controllers
             var datetime = datetimeThemTB.Value;
 
 
-            if (chuyenBayBL.CheckChuyenBayExists(Convert.ToInt32(maTB), datetime))
+            try
             {
-                MessageBox.Show("Đã tồn tại chuyến bay");
-                return;
+                chuyenBayBL.UpdateChuyenBay(Convert.ToInt32(maCB), Convert.ToInt32(maTB), datetime,
+                Convert.ToInt32(thoiGianBay), Convert.ToByte(tienTrinh));
+                MessageBox.Show("Cập nhật chuyến bay thành công.");
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message);
             }
 
-            chuyenBayBL.UpdateChuyenBay(Convert.ToInt32(maCB), Convert.ToInt32(maTB), datetime,
-                Convert.ToInt32(thoiGianBay), Convert.ToByte(tienTrinh));
-            MessageBox.Show("Cập nhật chuyến bay thành công.");
+            
             // Update
             dgvChuyenBay.DataSource = chuyenBayBL.GetChuyenBayList();
             this.Clear();

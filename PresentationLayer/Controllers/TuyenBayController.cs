@@ -205,13 +205,17 @@ namespace PresentationLayer.Controllers
             var sbDen = cbSanBayDen.SelectedValue;
             var tenTB = txtTenTB.Text;
             var giaTB = txtGiaTB.Text;
-            if (tuyenBayBL.CheckTuyenBayExists(tenTB))
+            try
             {
-                MessageBox.Show("Tuyến bay đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                tuyenBayBL.UpdateTuyenBay(Convert.ToInt32(maTB), tenTB, (int)sbDi, (int)sbDen, float.Parse(giaTB));
+                MessageBox.Show("Cập nhật thành công");
             }
-            tuyenBayBL.UpdateTuyenBay(Convert.ToInt32(maTB), tenTB, (int)sbDi, (int)sbDen, float.Parse(giaTB));
-            MessageBox.Show("Cập nhật thành công");
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
 
             dgvTuyenBay.DataSource = tuyenBayBL.GetTuyenBayList();
             this.Clear();
