@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabLichBay = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -35,7 +38,6 @@
             this.dgvLichBay = new System.Windows.Forms.DataGridView();
             this.datetimeNgayBay = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnBieuDo = new System.Windows.Forms.Panel();
             this.tabThongTinTK = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtMail = new System.Windows.Forms.TextBox();
@@ -60,6 +62,8 @@
             this.lbTenTK = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.picAvatar = new System.Windows.Forms.PictureBox();
+            this.pnBieuDo = new System.Windows.Forms.Panel();
+            this.chart_Home = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1.SuspendLayout();
             this.tabLichBay.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -68,6 +72,8 @@
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
+            this.pnBieuDo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Home)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -85,8 +91,8 @@
             // 
             // tabLichBay
             // 
-            this.tabLichBay.Controls.Add(this.panel5);
             this.tabLichBay.Controls.Add(this.pnBieuDo);
+            this.tabLichBay.Controls.Add(this.panel5);
             this.tabLichBay.ForeColor = System.Drawing.Color.DarkBlue;
             this.tabLichBay.Location = new System.Drawing.Point(4, 34);
             this.tabLichBay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -168,17 +174,6 @@
             this.label1.Size = new System.Drawing.Size(68, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ngày:";
-            // 
-            // pnBieuDo
-            // 
-            this.pnBieuDo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnBieuDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnBieuDo.ForeColor = System.Drawing.Color.Black;
-            this.pnBieuDo.Location = new System.Drawing.Point(3, 4);
-            this.pnBieuDo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pnBieuDo.Name = "pnBieuDo";
-            this.pnBieuDo.Size = new System.Drawing.Size(1265, 783);
-            this.pnBieuDo.TabIndex = 0;
             // 
             // tabThongTinTK
             // 
@@ -507,6 +502,32 @@
             this.picAvatar.TabIndex = 38;
             this.picAvatar.TabStop = false;
             // 
+            // pnBieuDo
+            // 
+            this.pnBieuDo.Controls.Add(this.chart_Home);
+            this.pnBieuDo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnBieuDo.Location = new System.Drawing.Point(685, 4);
+            this.pnBieuDo.Name = "pnBieuDo";
+            this.pnBieuDo.Size = new System.Drawing.Size(583, 783);
+            this.pnBieuDo.TabIndex = 2;
+            // 
+            // chart_Home
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart_Home.ChartAreas.Add(chartArea1);
+            this.chart_Home.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.chart_Home.Legends.Add(legend1);
+            this.chart_Home.Location = new System.Drawing.Point(0, 0);
+            this.chart_Home.Name = "chart_Home";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_Home.Series.Add(series1);
+            this.chart_Home.Size = new System.Drawing.Size(583, 783);
+            this.chart_Home.TabIndex = 0;
+            this.chart_Home.Text = "chart1";
+            // 
             // HomeController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -526,6 +547,8 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
+            this.pnBieuDo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Home)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -535,7 +558,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabLichBay;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel pnBieuDo;
         private System.Windows.Forms.TabPage tabThongTinTK;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
@@ -564,5 +586,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel pnBieuDo;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_Home;
     }
 }

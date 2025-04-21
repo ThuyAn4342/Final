@@ -13,6 +13,7 @@ using TransferObject;
 using BusinessLayer;
 using System.IO;
 using System.Security.Cryptography;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PresentationLayer.Controllers
 {
@@ -74,6 +75,7 @@ namespace PresentationLayer.Controllers
             datetimeNgayBay.ShowUpDown = true;
 
             DgvLoad();
+            DrawChart();
 
         }
 
@@ -177,6 +179,78 @@ namespace PresentationLayer.Controllers
         private void btnTimKiemLB_Click(object sender, EventArgs e)
         {
             DgvLoad();
+            DrawChart();
+        }
+
+        // Draw Chart
+        public void DrawChart()
+        {
+            // Chuẩn bị dữ liệu
+            var data = chuyenbayBL.GetChuyenBayListByNgay(datetimeNgayBay.Value);
+            var chartData = from x in data
+                            group x by x.TenTB into g
+                            select new
+                            {
+                                TuyenBay = g.Key,
+                                SoChuyenBay = g.Count()
+                            };
+
+            // Xóa các phần tử cũ của chart
+            chart_Home.Series.Clear();
+            chart_Home.Titles.Clear();
+            chart_Home.Legends.Clear();
+            if (chart_Home.ChartAreas.IndexOf("HomeArea") >= 0)
+            {
+                chart_Home.ChartAreas.Remove(chart_Home.ChartAreas["HomeArea"]);
+            }
+
+            // Tạo biểu đồ dạng Bar
+            Series series = new Series("SoChuyen");
+            series.ChartType = SeriesChartType.Bar;
+            series.BorderWidth = 1;
+            series.Color = Color.SteelBlue;
+            series.IsValueShownAsLabel = true; // Hiển thị giá trị trên các cột
+
+            int sum = 0;
+            foreach (var item in chartData)
+            {
+                sum += item.SoChuyenBay;
+            }
+
+            foreach (var item in chartData)
+            {
+                DataPoint dataPoint = new DataPoint();
+                dataPoint.SetValueXY(item.TuyenBay, item.SoChuyenBay);
+                dataPoint.Label = item.SoChuyenBay.ToString();
+                dataPoint.LegendText = item.TuyenBay;
+
+               
+                series.Points.Add(dataPoint);
+            }
+
+            // Thêm series vào biểu đồ
+            chart_Home.Series.Add(series);
+
+            // Cấu hình tiêu đề
+            chart_Home.Titles.Add("Thống kê Chuyến Bay Theo Tuyến");
+
+            // Cấu hình trục X và Y
+            ChartArea chartArea = new ChartArea("HomeArea");
+            chartArea.Position.Height = 60;
+            chartArea.AxisY.Title = "Số Chuyến Bay";
+            chartArea.AxisX.Title = "Tuyến Bay";
+
+            chart_Home.ChartAreas.Add(chartArea);
+
+            // Thêm chú thích (legend)
+            Legend legend = new Legend("Legend");
+            legend.Docking = Docking.Right;
+            legend.Alignment = StringAlignment.Center;  // Căn giữa chú thích
+            chart_Home.Legends.Add(legend);
+
+            // Cấu hình khoảng cách giữa các cột (bars)
+            series["PointWidth"] = "0.8"; // Thay đổi độ rộng của các cột để chúng không bị quá sát nhau
+
         }
     }
 }

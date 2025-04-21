@@ -112,6 +112,7 @@ namespace PresentationLayer.Controllers
                 ResetThongKe();
                 txtThangThongKe.Focus();
             }
+           
             DrawChart((DataTable)dgvThongKe.DataSource);
 
 
@@ -184,7 +185,10 @@ namespace PresentationLayer.Controllers
             chart_ThongKe.Series.Clear();
             chart_ThongKe.Titles.Clear();
             chart_ThongKe.Legends.Clear();
-
+            if (chart_ThongKe.ChartAreas.IndexOf("ThongKeArea") >= 0)
+            {
+                chart_ThongKe.ChartAreas.Remove(chart_ThongKe.ChartAreas["ThongKeArea"]);
+            }
             // Tạo biểu đồ dạng Pie
             Series series = new Series("ThongKe");
             series.ChartType = SeriesChartType.Pie;
@@ -215,7 +219,7 @@ namespace PresentationLayer.Controllers
             // Cấu hình tiêu đề
             chart_ThongKe.Titles.Add("Thống kê");
 
-            ChartArea chartArea = new ChartArea("Main");
+            ChartArea chartArea = new ChartArea("ThongKeArea");
             chartArea.Position.Auto = false;
             chartArea.Position.X = 50;
             chartArea.Position.Y = 40;
