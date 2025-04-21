@@ -12,6 +12,7 @@ namespace TransferObject
         public DateTime ngayLapHD { get; set; }
         public string phuongThucTT { get; set; }
         public double tongTien { get; set; }
+        public int maND { get; set; }
         public string nguoiLapHD { get; set; }
         public int soLuongVe { get; set; }
     }

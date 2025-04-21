@@ -122,5 +122,31 @@ namespace DataLayer
             int count = Convert.ToInt32(dataProvider.MyExecuteScalar(sql, CommandType.Text, parameters));
             return count > 0;
         }
+
+        //Xóa ghe_chuyenbay theo mã chuyến bay
+        public bool DeleteGhe_ChuyenBay(int maCB)
+        {
+            try
+            {
+                string sql = "DELETE FROM Ghe_ChuyenBay WHERE maCB = " + maCB;
+                return dataProvider.MyExecuteNonQuery(sql, CommandType.Text) > 0;
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool UpdateTienTrinh(int maCB, byte tienTrinhID)
+        {
+            string sql = "UPDATE ChuyenBay SET tienTrinhID = @tienTrinhID WHERE maCB = @maCB";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maCB", maCB),
+                new SqlParameter("@tienTrinhID", tienTrinhID)
+            };
+            return dataProvider.MyExecuteNonQuery(sql, CommandType.Text, parameters) > 0;
+        }
     }
 }

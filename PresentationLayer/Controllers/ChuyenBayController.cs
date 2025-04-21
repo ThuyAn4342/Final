@@ -16,6 +16,8 @@ namespace PresentationLayer.Controllers
         private ChuyenBayBL chuyenBayBL = new ChuyenBayBL();
         private TuyenBayBL tuyenBayBL = new TuyenBayBL();
         private TienTrinhBL tienTrinhBL = new TienTrinhBL();
+        private HoaDonBL hoaDonBL = new HoaDonBL();
+        private VeChuyenBayBL veChuyenBayBL = new VeChuyenBayBL();
         public ChuyenBayController()
         {
             InitializeComponent();
@@ -118,6 +120,13 @@ namespace PresentationLayer.Controllers
             var thoiGianBay = txtThoiGianBay.Text;
             var datetime = datetimeThemTB.Value;
 
+
+            if (chuyenBayBL.CheckChuyenBayExists(Convert.ToInt32(maTB), datetime))
+            {
+                MessageBox.Show("Đã tồn tại chuyến bay");
+                return;
+            }
+
             chuyenBayBL.UpdateChuyenBay(Convert.ToInt32(maCB), Convert.ToInt32(maTB), datetime,
                 Convert.ToInt32(thoiGianBay), Convert.ToByte(tienTrinh));
             MessageBox.Show("Cập nhật chuyến bay thành công.");
@@ -143,8 +152,30 @@ namespace PresentationLayer.Controllers
                     DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa chuyến {maCB} này không?", "Xác nhận", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        chuyenBayBL.DeleteChuyenBay(Convert.ToInt32(maCB));
-                        ChuyenBayDisplay();
+                       // xử lý
+                       // Tạo list maHD của Tuyen
+                       var x = from ve in veChuyenBayBL.GetVeChuyenBayList()
+                               join hd in hoaDonBL.GetHoaDonList()
+                                 on ve.maHD equals hd.maHD
+                               where ve.maCB == Convert.ToInt32(maCB)
+                               select new
+                               {
+                                 
+                                   hd.maHD,
+                               };
+                        // Xóa vé
+                        veChuyenBayBL.DeleteVeByMaCB(Convert.ToInt32(maCB));
+                        // Xóa hóa đơn
+                        foreach (var item in x)
+                        {
+                            hoaDonBL.DeleteHoaDon(item.maHD);
+                        }
+
+                        // Cập nhật tiến trình
+                        // Tiến trình 4: Hủy chuyến
+                        chuyenBayBL.UpdateTienTrinh(Convert.ToInt32(maCB), 4);
+                        MessageBox.Show("Xóa chuyến bay thành công.");
+                        dgvChuyenBay.DataSource = chuyenBayBL.GetChuyenBayList();
                     }
                 }
             }

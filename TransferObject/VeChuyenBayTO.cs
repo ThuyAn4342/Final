@@ -15,6 +15,7 @@ namespace TransferObject
         public int maCB { get; set; }
         public DateTime ngayGioDi { get; set; }
         public string tuyenBay { get; set; }
+        public int maGhe { get; set; }
         public string tenGhe { get; set; }
         public string hangGhe { get; set; }
         public double gia { get; set; }

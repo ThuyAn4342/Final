@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TransferObject;
 using DataLayer;
+using System.Data.SqlClient;
+
 namespace BusinessLayer
 {
     public class ChuyenBayBL
@@ -32,11 +34,22 @@ namespace BusinessLayer
                          };
             return result.ToList();
         }
+
+        public List<ViewChuyenBayTO> GetChuyenBayListByNgay(DateTime date)
+        {
+            var data = this.GetChuyenBayList();
+
+            var result = from item in data
+                         where item.NgayGioDi.Month == date.Month && item.NgayGioDi.Year == date.Year
+                         select item;
+
+            return result.ToList();
+        }
         public bool AddChuyenBay(int maTB, DateTime ngayGioDi, int thoiGianBay, byte tienTrinhID)
         {
             return chuyenBayDL.AddChuyenBay(maTB, ngayGioDi, thoiGianBay, tienTrinhID);
         }
-
+        
         public bool DeleteChuyenBay(int maCB)
         {
             return chuyenBayDL.DeleteChuyenBay(maCB);
@@ -71,6 +84,31 @@ namespace BusinessLayer
         public bool CheckChuyenBayExists(int maTB, DateTime ngayGioDi)
         {
             return chuyenBayDL.CheckChuyenBayExists(maTB, ngayGioDi);
+        }
+
+        public bool DeleteGhe_ChuyenBay(int maCB)
+        {
+            try
+            {
+                return chuyenBayDL.DeleteGhe_ChuyenBay(maCB);
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool UpdateTienTrinh(int maCB, byte tienTrinhID)
+        {
+            try
+            {
+                return chuyenBayDL.UpdateTienTrinh(maCB, tienTrinhID);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
     }
 }
