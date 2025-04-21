@@ -185,14 +185,17 @@ namespace PresentationLayer.Controllers
                 DialogResult result = MessageBox.Show("Bạn có chắc muốn xoá máy bay này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    if (mayBayBL.DeleteMayBay(maMB))
+                    try
                     {
-                        MessageBox.Show("Đã xoá thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvDSMayBay.DataSource = mayBayBL.GetMayBayList();
+                        if (mayBayBL.DeleteMayBay(maMB))
+                        {
+                            MessageBox.Show("Đã xoá thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            dgvDSMayBay.DataSource = mayBayBL.GetMayBayList();
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Không thể xóa máy bay!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

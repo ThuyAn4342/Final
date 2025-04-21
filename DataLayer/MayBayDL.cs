@@ -53,7 +53,7 @@ namespace DataLayer
         // Thêm máy bay mới
         public bool AddMayBay(string tenMB, int slGheH1, int slGhePT, int maLoaiMB)
         {
-            string sql = "INSERT INTO MayBay (tenMB, slGheH1, slGhePT, maLoaiMB) VALUES (@TenMB, @slGheH1, @slGhePT, @maLoaiMB)";
+            string sql = "sp_ThemMayBay";
             SqlParameter[] param = {
                 new SqlParameter("@TenMB", tenMB),
                 new SqlParameter("@slGheH1", slGheH1),
@@ -61,7 +61,7 @@ namespace DataLayer
                 new SqlParameter("@maLoaiMB", maLoaiMB)
             };
 
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+            return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, param) > 0;
         }
 
         public bool IsLoaiMayBayExist(int maLoaiMB)
@@ -79,7 +79,7 @@ namespace DataLayer
         //Cập nhật máy bay
         public bool UpdateMayBay(int maMB, string tenMB, int slGheH1, int slGhePT, int maLoaiMB)
         {
-            string sql = "UPDATE MayBay SET tenMB = @tenMB, slGheH1 = @slGheH1, slGhePT = @slGhePT, maLoaiMB = @maLoaiMB WHERE maMB = @maMB";
+            string sql = "sp_CapNhatMayBay";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
@@ -90,7 +90,21 @@ namespace DataLayer
                 new SqlParameter("@maMB", maMB)
             };
 
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, parameters) > 0;
+            return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, parameters) > 0;
+        }
+
+        //Kiểm tra khóa ngoại
+        public bool CheckForeignKey(int maMB)
+        {
+            string sql = "sp_CheckForeignKey_MayBay";
+            SqlParameter[] parameters = {
+        new SqlParameter("@maMB", maMB)
+    };
+
+            object result = provider.MyExecuteScalar(sql, CommandType.StoredProcedure, parameters);
+            int count = Convert.ToInt32(result);
+
+            return count > 0;  // Nếu có ghế liên kết, trả về true (không thể xóa)
         }
 
 
@@ -98,10 +112,10 @@ namespace DataLayer
         // Xóa máy bay
         public bool DeleteMayBay(int maMB)
         {
-            string sql = "DELETE FROM MayBay WHERE maMB = @ID";
+            string sql = "sp_XoaMayBay";
             SqlParameter[] param = { new SqlParameter("@ID", maMB) };
 
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+            return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, param) > 0;
         }
     }
 }

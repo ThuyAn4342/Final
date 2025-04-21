@@ -48,7 +48,7 @@ namespace DataLayer
         // Cập nhật quy định
         public bool UpdateQuyDinh(int maQD, string tenQD, int noiDungQD)
         {
-            string sql = "UPDATE QUYDINH SET tenQD = @tenQD, noidungQD = @noiDungQD, ngayCapNhat = @ngayCapNhat WHERE maQD = @maQD";
+            string sql = "sp_CapNhatQuyDinh";
             SqlParameter[] parameters =
             {
                 new SqlParameter("@tenQD", tenQD),
@@ -57,7 +57,7 @@ namespace DataLayer
                 new SqlParameter("@maQD", maQD)
             };
 
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, parameters) > 0;
+            return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, parameters) > 0;
         }
 
         public int GetNoiDungQDByTen(string tenQD)

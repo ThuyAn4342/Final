@@ -45,19 +45,19 @@ namespace DataLayer
         // Thêm sân bay mới
         public bool AddSanBay(string tenSanBay, string tinh, string quocGia)
         {
-            string sql = "INSERT INTO SanBay (tenSB, tinhThanh, quocGia) VALUES (@TenSanBay, @Tinh, @QuocGia)";
+            string sql = "sp_ThemSanBay";
             SqlParameter[] param = {
                 new SqlParameter("@TenSanBay", tenSanBay),
-                new SqlParameter("@Tinh", tinh),
+                new SqlParameter("@TinhThanh", tinh),
                 new SqlParameter("@QuocGia", quocGia)
             };
 
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+            return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, param) > 0;
         }
 
         public bool UpdateSanBay(int maSB, string tenSB, string tinhThanh, string quocGia)
         {
-            string sql = "UPDATE SanBay SET tenSB = @tenSB, tinhThanh = @tinhThanh, quocGia = @quocGia WHERE maSB = @maSB";
+            string sql = "sp_CapNhatSanBay";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
@@ -67,22 +67,20 @@ namespace DataLayer
             new SqlParameter("@maSB", maSB)
             };
 
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, parameters) > 0;
+            return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, parameters) > 0;
         }
 
         //Kiểm tra có tồn tại khóa ngoại hay không
         public bool CheckForeignKey(int maSB)
         {
-            string sql = "SELECT " +
-                "(SELECT COUNT(*) FROM TuyenBay WHERE sanBayDi = @maSB OR sanBayDen = @maSB) + " +
-                "(SELECT COUNT(*) FROM SanBayTrungGian WHERE maSB = @maSB)";
+            string sql = "sp_KiemTraKhoaNgoaiSanBay";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@maSB", maSB)
             };
 
-            object result = provider.MyExecuteScalar(sql, CommandType.Text, parameters);
+            object result = provider.MyExecuteScalar(sql, CommandType.StoredProcedure, parameters);
             int count = Convert.ToInt32(result);
             return count > 0;
         }
@@ -90,10 +88,10 @@ namespace DataLayer
         // Xóa sân bay
         public bool DeleteSanBay(int sanBayID)
         {
-            string sql = "DELETE FROM SanBay WHERE maSB = @ID";
+            string sql = "sp_XoaSanBay";
             SqlParameter[] param = { new SqlParameter("@ID", sanBayID) };
 
-            return provider.MyExecuteNonQuery(sql, CommandType.Text, param) > 0;
+            return provider.MyExecuteNonQuery(sql, CommandType.StoredProcedure, param) > 0;
         }
 
         public List<SanBayTO> GetSanBayTOs()

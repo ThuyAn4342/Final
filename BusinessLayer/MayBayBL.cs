@@ -57,6 +57,8 @@ namespace BusinessLayer
         // Xóa máy bay
         public bool DeleteMayBay(int id)
         {
+            if (maybayDL.CheckForeignKey(id) == true)
+                throw new Exception("Đã liên kết với ghế, không thể xóa!!!");
             return maybayDL.DeleteMayBay(id);
         }
     }
