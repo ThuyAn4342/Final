@@ -202,7 +202,7 @@ namespace PresentationLayer.Controllers
                     // Thêm điểm dữ liệu vào series
                     DataPoint point = new DataPoint();
                     point.SetValueY(tiLe);
-                    point.Label = $"{tenTB}: {tiLe}%";
+                    point.Label = $"{tiLe}%";
                     point.LegendText = tenTB;
 
                     series.Points.Add(point);
@@ -215,12 +215,11 @@ namespace PresentationLayer.Controllers
             // Cấu hình tiêu đề
             chart_ThongKe.Titles.Add("Thống kê");
 
-            // Cấu hình biểu đồ 3D
-            if (chart_ThongKe.ChartAreas.Count == 0)
-            {
-                chart_ThongKe.ChartAreas.Add(new ChartArea("MainArea"));
-            }
-            chart_ThongKe.ChartAreas[0].Area3DStyle.Enable3D = true;
+            ChartArea chartArea = new ChartArea("Main");
+            chartArea.Position.Auto = false;
+            chartArea.Position.X = 50;
+            chartArea.Position.Y = 40;
+            chart_ThongKe.ChartAreas.Add(chartArea);
 
             // Thêm chú thích (legend)
             Legend legend = new Legend("Legend");
