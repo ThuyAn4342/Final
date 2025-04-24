@@ -120,9 +120,8 @@ namespace DataLayer
             try
             {
                 Connect();
-                SqlDataReader reader = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
-                dt.Load(reader); // Đây là cách đúng để chuyển từ SqlDataReader sang DataTable
+                dt.Load(cmd.ExecuteReader());
                 return dt;
             }
             catch (SqlException ex)

@@ -55,103 +55,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChucNang.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ChucNangTO.cs" />
-    <Compile Include="ChuyenBay.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ChuyenBayTO.cs" />
     <Compile Include="CurrentUserTO.cs" />
-    <Compile Include="FlightManagementModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FlightManagementModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FlightManagementModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FlightManagementModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FlightManagementModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Ghe.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Ghe_ChuyenBay.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HoaDon.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="HoaDonTO.cs" />
-    <Compile Include="LoaiMayBay.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MayBay.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NguoiDung.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuyDinh.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SanBay.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SanBayTO.cs" />
-    <Compile Include="SanBayTrungGian.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SanBayTrungGianTO.cs" />
     <Compile Include="TaiKhoanNDTO.cs" />
     <Compile Include="TienTrinhTO.cs" />
     <Compile Include="VeChuyenBayTO.cs" />
     <Compile Include="ViewChuyenBayTO.cs" />
     <Compile Include="ViewSanBayTrungGianTO.cs" />
-    <Compile Include="TienTrinh.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TuyenBay.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="TuyenBayTO.cs" />
-    <Compile Include="VeChuyenBay.cs">
-      <DependentUpon>FlightManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewTuyenBayTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="FlightManagementModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FlightManagementModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="FlightManagementModel.edmx.diagram">
-      <DependentUpon>FlightManagementModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="FlightManagementModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FlightManagementModel.edmx</DependentUpon>
-      <LastGenOutput>FlightManagementModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="FlightManagementModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FlightManagementModel.edmx</DependentUpon>
-      <LastGenOutput>FlightManagementModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
