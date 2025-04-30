@@ -31,37 +31,10 @@
             this.tabTKND = new System.Windows.Forms.TabControl();
             this.tabKH = new System.Windows.Forms.TabPage();
             this.dgvTKKH = new System.Windows.Forms.DataGridView();
-            this.maND = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hoTenND = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenDangNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChucNangId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.matKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.linkAnh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabNV = new System.Windows.Forms.TabPage();
             this.dgvTKNV = new System.Windows.Forms.DataGridView();
-            this.maND_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hoTenND_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenDangNhap_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChucNangId_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soDT_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.matKhau_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.linkAnh_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mail_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete_NV = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabQTV = new System.Windows.Forms.TabPage();
             this.dgvTKQTV = new System.Windows.Forms.DataGridView();
-            this.maND_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hoTenND_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenDangNhap_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChucNangId_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soDT_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.matKhau_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.linkAnh_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mail_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete_Admin = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnThemTK = new System.Windows.Forms.Button();
             this.txtAnhDaiDien = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -81,6 +54,33 @@
             this.txtMail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnChonAnh = new System.Windows.Forms.Button();
+            this.maND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hoTenND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenDangNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChucNangId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.matKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linkAnh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.maND_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hoTenND_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenDangNhap_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChucNangId_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soDT_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.matKhau_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linkAnh_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mail_NV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete_NV = new System.Windows.Forms.DataGridViewImageColumn();
+            this.maND_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hoTenND_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenDangNhap_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChucNangId_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soDT_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.matKhau_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linkAnh_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mail_Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete_Admin = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabTKND.SuspendLayout();
             this.tabKH.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTKKH)).BeginInit();
@@ -117,6 +117,7 @@
             // 
             // dgvTKKH
             // 
+            this.dgvTKKH.AllowUserToAddRows = false;
             this.dgvTKKH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -142,71 +143,6 @@
             this.dgvTKKH.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTKKH_CellContentClick);
             this.dgvTKKH.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTKKH_RowHeaderMouseClick);
             // 
-            // maND
-            // 
-            this.maND.DataPropertyName = "maND";
-            this.maND.HeaderText = "maND";
-            this.maND.MinimumWidth = 6;
-            this.maND.Name = "maND";
-            // 
-            // hoTenND
-            // 
-            this.hoTenND.DataPropertyName = "hoTenND";
-            this.hoTenND.HeaderText = "hoTenND";
-            this.hoTenND.MinimumWidth = 6;
-            this.hoTenND.Name = "hoTenND";
-            // 
-            // tenDangNhap
-            // 
-            this.tenDangNhap.DataPropertyName = "tenDangNhap";
-            this.tenDangNhap.HeaderText = "tenDangNhap";
-            this.tenDangNhap.MinimumWidth = 6;
-            this.tenDangNhap.Name = "tenDangNhap";
-            // 
-            // ChucNangId
-            // 
-            this.ChucNangId.DataPropertyName = "ChucNangId";
-            this.ChucNangId.HeaderText = "ChucNangId";
-            this.ChucNangId.MinimumWidth = 6;
-            this.ChucNangId.Name = "ChucNangId";
-            // 
-            // soDT
-            // 
-            this.soDT.DataPropertyName = "soDT";
-            this.soDT.FillWeight = 80F;
-            this.soDT.HeaderText = "soDT";
-            this.soDT.MinimumWidth = 6;
-            this.soDT.Name = "soDT";
-            // 
-            // matKhau
-            // 
-            this.matKhau.DataPropertyName = "matKhau";
-            this.matKhau.HeaderText = "matKhau";
-            this.matKhau.MinimumWidth = 6;
-            this.matKhau.Name = "matKhau";
-            // 
-            // linkAnh
-            // 
-            this.linkAnh.DataPropertyName = "linkAnh";
-            this.linkAnh.HeaderText = "linkAnh";
-            this.linkAnh.MinimumWidth = 6;
-            this.linkAnh.Name = "linkAnh";
-            // 
-            // mail
-            // 
-            this.mail.DataPropertyName = "mail";
-            this.mail.HeaderText = "mail";
-            this.mail.MinimumWidth = 6;
-            this.mail.Name = "mail";
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "";
-            this.Delete.MinimumWidth = 6;
-            this.Delete.Name = "Delete";
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // tabNV
             // 
             this.tabNV.Controls.Add(this.dgvTKNV);
@@ -220,6 +156,7 @@
             // 
             // dgvTKNV
             // 
+            this.dgvTKNV.AllowUserToAddRows = false;
             this.dgvTKNV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -245,70 +182,6 @@
             this.dgvTKNV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTKNV_CellContentClick);
             this.dgvTKNV.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTKNV_RowHeaderMouseClick);
             // 
-            // maND_NV
-            // 
-            this.maND_NV.DataPropertyName = "maND";
-            this.maND_NV.HeaderText = "maND";
-            this.maND_NV.MinimumWidth = 6;
-            this.maND_NV.Name = "maND_NV";
-            // 
-            // hoTenND_NV
-            // 
-            this.hoTenND_NV.DataPropertyName = "hoTenND";
-            this.hoTenND_NV.HeaderText = "hoTenND";
-            this.hoTenND_NV.MinimumWidth = 6;
-            this.hoTenND_NV.Name = "hoTenND_NV";
-            // 
-            // tenDangNhap_NV
-            // 
-            this.tenDangNhap_NV.DataPropertyName = "tenDangNhap";
-            this.tenDangNhap_NV.HeaderText = "tenDangNhap";
-            this.tenDangNhap_NV.MinimumWidth = 6;
-            this.tenDangNhap_NV.Name = "tenDangNhap_NV";
-            // 
-            // ChucNangId_NV
-            // 
-            this.ChucNangId_NV.DataPropertyName = "ChucNangId";
-            this.ChucNangId_NV.HeaderText = "ChucNangId";
-            this.ChucNangId_NV.MinimumWidth = 6;
-            this.ChucNangId_NV.Name = "ChucNangId_NV";
-            // 
-            // soDT_NV
-            // 
-            this.soDT_NV.DataPropertyName = "soDT";
-            this.soDT_NV.HeaderText = "soDT";
-            this.soDT_NV.MinimumWidth = 6;
-            this.soDT_NV.Name = "soDT_NV";
-            // 
-            // matKhau_NV
-            // 
-            this.matKhau_NV.DataPropertyName = "matKhau";
-            this.matKhau_NV.HeaderText = "matKhau";
-            this.matKhau_NV.MinimumWidth = 6;
-            this.matKhau_NV.Name = "matKhau_NV";
-            // 
-            // linkAnh_NV
-            // 
-            this.linkAnh_NV.DataPropertyName = "linkAnh";
-            this.linkAnh_NV.HeaderText = "linkAnh";
-            this.linkAnh_NV.MinimumWidth = 6;
-            this.linkAnh_NV.Name = "linkAnh_NV";
-            // 
-            // mail_NV
-            // 
-            this.mail_NV.DataPropertyName = "mail";
-            this.mail_NV.HeaderText = "mail";
-            this.mail_NV.MinimumWidth = 6;
-            this.mail_NV.Name = "mail_NV";
-            // 
-            // Delete_NV
-            // 
-            this.Delete_NV.HeaderText = "";
-            this.Delete_NV.MinimumWidth = 6;
-            this.Delete_NV.Name = "Delete_NV";
-            this.Delete_NV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Delete_NV.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // tabQTV
             // 
             this.tabQTV.Controls.Add(this.dgvTKQTV);
@@ -322,6 +195,7 @@
             // 
             // dgvTKQTV
             // 
+            this.dgvTKQTV.AllowUserToAddRows = false;
             this.dgvTKQTV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -346,70 +220,6 @@
             this.dgvTKQTV.TabIndex = 1;
             this.dgvTKQTV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTKQTV_CellContentClick);
             this.dgvTKQTV.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTKQTV_RowHeaderMouseClick);
-            // 
-            // maND_Admin
-            // 
-            this.maND_Admin.DataPropertyName = "maND";
-            this.maND_Admin.HeaderText = "maND";
-            this.maND_Admin.MinimumWidth = 6;
-            this.maND_Admin.Name = "maND_Admin";
-            // 
-            // hoTenND_Admin
-            // 
-            this.hoTenND_Admin.DataPropertyName = "hoTenND";
-            this.hoTenND_Admin.HeaderText = "hoTenND";
-            this.hoTenND_Admin.MinimumWidth = 6;
-            this.hoTenND_Admin.Name = "hoTenND_Admin";
-            // 
-            // tenDangNhap_Admin
-            // 
-            this.tenDangNhap_Admin.DataPropertyName = "tenDangNhap";
-            this.tenDangNhap_Admin.HeaderText = "tenDangNhap";
-            this.tenDangNhap_Admin.MinimumWidth = 6;
-            this.tenDangNhap_Admin.Name = "tenDangNhap_Admin";
-            // 
-            // ChucNangId_Admin
-            // 
-            this.ChucNangId_Admin.DataPropertyName = "ChucNangId";
-            this.ChucNangId_Admin.HeaderText = "ChucNangId";
-            this.ChucNangId_Admin.MinimumWidth = 6;
-            this.ChucNangId_Admin.Name = "ChucNangId_Admin";
-            // 
-            // soDT_Admin
-            // 
-            this.soDT_Admin.DataPropertyName = "soDT";
-            this.soDT_Admin.HeaderText = "soDT";
-            this.soDT_Admin.MinimumWidth = 6;
-            this.soDT_Admin.Name = "soDT_Admin";
-            // 
-            // matKhau_Admin
-            // 
-            this.matKhau_Admin.DataPropertyName = "matKhau";
-            this.matKhau_Admin.HeaderText = "matKhau";
-            this.matKhau_Admin.MinimumWidth = 6;
-            this.matKhau_Admin.Name = "matKhau_Admin";
-            // 
-            // linkAnh_Admin
-            // 
-            this.linkAnh_Admin.DataPropertyName = "linkAnh";
-            this.linkAnh_Admin.HeaderText = "linkAnh";
-            this.linkAnh_Admin.MinimumWidth = 6;
-            this.linkAnh_Admin.Name = "linkAnh_Admin";
-            // 
-            // mail_Admin
-            // 
-            this.mail_Admin.DataPropertyName = "mail";
-            this.mail_Admin.HeaderText = "mail";
-            this.mail_Admin.MinimumWidth = 6;
-            this.mail_Admin.Name = "mail_Admin";
-            // 
-            // Delete_Admin
-            // 
-            this.Delete_Admin.HeaderText = "";
-            this.Delete_Admin.MinimumWidth = 6;
-            this.Delete_Admin.Name = "Delete_Admin";
-            this.Delete_Admin.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Delete_Admin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // btnThemTK
             // 
@@ -637,6 +447,205 @@
             this.btnChonAnh.UseVisualStyleBackColor = false;
             this.btnChonAnh.Click += new System.EventHandler(this.btnChonAnh_Click);
             // 
+            // maND
+            // 
+            this.maND.DataPropertyName = "maND";
+            this.maND.HeaderText = "maND";
+            this.maND.MinimumWidth = 6;
+            this.maND.Name = "maND";
+            // 
+            // hoTenND
+            // 
+            this.hoTenND.DataPropertyName = "hoTenND";
+            this.hoTenND.HeaderText = "hoTenND";
+            this.hoTenND.MinimumWidth = 6;
+            this.hoTenND.Name = "hoTenND";
+            // 
+            // tenDangNhap
+            // 
+            this.tenDangNhap.DataPropertyName = "tenDangNhap";
+            this.tenDangNhap.HeaderText = "tenDangNhap";
+            this.tenDangNhap.MinimumWidth = 6;
+            this.tenDangNhap.Name = "tenDangNhap";
+            // 
+            // ChucNangId
+            // 
+            this.ChucNangId.DataPropertyName = "ChucNangId";
+            this.ChucNangId.HeaderText = "ChucNangId";
+            this.ChucNangId.MinimumWidth = 6;
+            this.ChucNangId.Name = "ChucNangId";
+            // 
+            // soDT
+            // 
+            this.soDT.DataPropertyName = "soDT";
+            this.soDT.FillWeight = 80F;
+            this.soDT.HeaderText = "soDT";
+            this.soDT.MinimumWidth = 6;
+            this.soDT.Name = "soDT";
+            // 
+            // matKhau
+            // 
+            this.matKhau.DataPropertyName = "matKhau";
+            this.matKhau.HeaderText = "matKhau";
+            this.matKhau.MinimumWidth = 6;
+            this.matKhau.Name = "matKhau";
+            // 
+            // linkAnh
+            // 
+            this.linkAnh.DataPropertyName = "linkAnh";
+            this.linkAnh.HeaderText = "linkAnh";
+            this.linkAnh.MinimumWidth = 6;
+            this.linkAnh.Name = "linkAnh";
+            // 
+            // mail
+            // 
+            this.mail.DataPropertyName = "mail";
+            this.mail.HeaderText = "mail";
+            this.mail.MinimumWidth = 6;
+            this.mail.Name = "mail";
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "";
+            this.Delete.Image = global::PresentationLayer.Properties.Resources.trash;
+            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Delete.MinimumWidth = 6;
+            this.Delete.Name = "Delete";
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // maND_NV
+            // 
+            this.maND_NV.DataPropertyName = "maND";
+            this.maND_NV.HeaderText = "maND";
+            this.maND_NV.MinimumWidth = 6;
+            this.maND_NV.Name = "maND_NV";
+            // 
+            // hoTenND_NV
+            // 
+            this.hoTenND_NV.DataPropertyName = "hoTenND";
+            this.hoTenND_NV.HeaderText = "hoTenND";
+            this.hoTenND_NV.MinimumWidth = 6;
+            this.hoTenND_NV.Name = "hoTenND_NV";
+            // 
+            // tenDangNhap_NV
+            // 
+            this.tenDangNhap_NV.DataPropertyName = "tenDangNhap";
+            this.tenDangNhap_NV.HeaderText = "tenDangNhap";
+            this.tenDangNhap_NV.MinimumWidth = 6;
+            this.tenDangNhap_NV.Name = "tenDangNhap_NV";
+            // 
+            // ChucNangId_NV
+            // 
+            this.ChucNangId_NV.DataPropertyName = "ChucNangId";
+            this.ChucNangId_NV.HeaderText = "ChucNangId";
+            this.ChucNangId_NV.MinimumWidth = 6;
+            this.ChucNangId_NV.Name = "ChucNangId_NV";
+            // 
+            // soDT_NV
+            // 
+            this.soDT_NV.DataPropertyName = "soDT";
+            this.soDT_NV.HeaderText = "soDT";
+            this.soDT_NV.MinimumWidth = 6;
+            this.soDT_NV.Name = "soDT_NV";
+            // 
+            // matKhau_NV
+            // 
+            this.matKhau_NV.DataPropertyName = "matKhau";
+            this.matKhau_NV.HeaderText = "matKhau";
+            this.matKhau_NV.MinimumWidth = 6;
+            this.matKhau_NV.Name = "matKhau_NV";
+            // 
+            // linkAnh_NV
+            // 
+            this.linkAnh_NV.DataPropertyName = "linkAnh";
+            this.linkAnh_NV.HeaderText = "linkAnh";
+            this.linkAnh_NV.MinimumWidth = 6;
+            this.linkAnh_NV.Name = "linkAnh_NV";
+            // 
+            // mail_NV
+            // 
+            this.mail_NV.DataPropertyName = "mail";
+            this.mail_NV.HeaderText = "mail";
+            this.mail_NV.MinimumWidth = 6;
+            this.mail_NV.Name = "mail_NV";
+            // 
+            // Delete_NV
+            // 
+            this.Delete_NV.HeaderText = "";
+            this.Delete_NV.Image = global::PresentationLayer.Properties.Resources.trash;
+            this.Delete_NV.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Delete_NV.MinimumWidth = 6;
+            this.Delete_NV.Name = "Delete_NV";
+            this.Delete_NV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete_NV.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // maND_Admin
+            // 
+            this.maND_Admin.DataPropertyName = "maND";
+            this.maND_Admin.HeaderText = "maND";
+            this.maND_Admin.MinimumWidth = 6;
+            this.maND_Admin.Name = "maND_Admin";
+            // 
+            // hoTenND_Admin
+            // 
+            this.hoTenND_Admin.DataPropertyName = "hoTenND";
+            this.hoTenND_Admin.HeaderText = "hoTenND";
+            this.hoTenND_Admin.MinimumWidth = 6;
+            this.hoTenND_Admin.Name = "hoTenND_Admin";
+            // 
+            // tenDangNhap_Admin
+            // 
+            this.tenDangNhap_Admin.DataPropertyName = "tenDangNhap";
+            this.tenDangNhap_Admin.HeaderText = "tenDangNhap";
+            this.tenDangNhap_Admin.MinimumWidth = 6;
+            this.tenDangNhap_Admin.Name = "tenDangNhap_Admin";
+            // 
+            // ChucNangId_Admin
+            // 
+            this.ChucNangId_Admin.DataPropertyName = "ChucNangId";
+            this.ChucNangId_Admin.HeaderText = "ChucNangId";
+            this.ChucNangId_Admin.MinimumWidth = 6;
+            this.ChucNangId_Admin.Name = "ChucNangId_Admin";
+            // 
+            // soDT_Admin
+            // 
+            this.soDT_Admin.DataPropertyName = "soDT";
+            this.soDT_Admin.HeaderText = "soDT";
+            this.soDT_Admin.MinimumWidth = 6;
+            this.soDT_Admin.Name = "soDT_Admin";
+            // 
+            // matKhau_Admin
+            // 
+            this.matKhau_Admin.DataPropertyName = "matKhau";
+            this.matKhau_Admin.HeaderText = "matKhau";
+            this.matKhau_Admin.MinimumWidth = 6;
+            this.matKhau_Admin.Name = "matKhau_Admin";
+            // 
+            // linkAnh_Admin
+            // 
+            this.linkAnh_Admin.DataPropertyName = "linkAnh";
+            this.linkAnh_Admin.HeaderText = "linkAnh";
+            this.linkAnh_Admin.MinimumWidth = 6;
+            this.linkAnh_Admin.Name = "linkAnh_Admin";
+            // 
+            // mail_Admin
+            // 
+            this.mail_Admin.DataPropertyName = "mail";
+            this.mail_Admin.HeaderText = "mail";
+            this.mail_Admin.MinimumWidth = 6;
+            this.mail_Admin.Name = "mail_Admin";
+            // 
+            // Delete_Admin
+            // 
+            this.Delete_Admin.HeaderText = "";
+            this.Delete_Admin.Image = global::PresentationLayer.Properties.Resources.trash;
+            this.Delete_Admin.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Delete_Admin.MinimumWidth = 6;
+            this.Delete_Admin.Name = "Delete_Admin";
+            this.Delete_Admin.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete_Admin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // TaiKhoanNDController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -703,6 +712,7 @@
         private System.Windows.Forms.Button btnCapNhatTK;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnChonAnh;
         private System.Windows.Forms.DataGridViewTextBoxColumn maND;
         private System.Windows.Forms.DataGridViewTextBoxColumn hoTenND;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenDangNhap;
@@ -730,6 +740,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn linkAnh_Admin;
         private System.Windows.Forms.DataGridViewTextBoxColumn mail_Admin;
         private System.Windows.Forms.DataGridViewImageColumn Delete_Admin;
-        private System.Windows.Forms.Button btnChonAnh;
     }
 }

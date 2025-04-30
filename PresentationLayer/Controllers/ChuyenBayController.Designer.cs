@@ -30,7 +30,6 @@
         {
             this.btnTimKiemTB = new System.Windows.Forms.Button();
             this.dgvChuyenBay = new System.Windows.Forms.DataGridView();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.cbTuyenBaySearch = new System.Windows.Forms.ComboBox();
             this.btnHuyThemCB = new System.Windows.Forms.Button();
@@ -45,6 +44,7 @@
             this.datetimeThemTB = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.btnCapNhatCB = new System.Windows.Forms.Button();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChuyenBay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,13 +75,6 @@
             this.dgvChuyenBay.Size = new System.Drawing.Size(944, 289);
             this.dgvChuyenBay.TabIndex = 82;
             this.dgvChuyenBay.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChuyenBay_CellClick);
-            
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.MinimumWidth = 8;
-            this.Delete.Name = "Delete";
             // 
             // label2
             // 
@@ -252,6 +245,14 @@
             this.btnCapNhatCB.Text = "Cập nhật";
             this.btnCapNhatCB.UseVisualStyleBackColor = false;
             this.btnCapNhatCB.Click += new System.EventHandler(this.btnCapNhatCB_Click);
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Image = global::PresentationLayer.Properties.Resources.trash;
+            this.Delete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Delete.MinimumWidth = 8;
+            this.Delete.Name = "Delete";
             // 
             // ChuyenBayController
             // 
