@@ -70,6 +70,7 @@
             this.txtMatKhauMoi.ForeColor = System.Drawing.Color.DarkBlue;
             this.txtMatKhauMoi.Location = new System.Drawing.Point(148, 55);
             this.txtMatKhauMoi.Name = "txtMatKhauMoi";
+            this.txtMatKhauMoi.PasswordChar = '*';
             this.txtMatKhauMoi.Size = new System.Drawing.Size(228, 30);
             this.txtMatKhauMoi.TabIndex = 0;
             // 
@@ -90,6 +91,7 @@
             this.txtNhapLaiMK.ForeColor = System.Drawing.Color.DarkBlue;
             this.txtNhapLaiMK.Location = new System.Drawing.Point(148, 140);
             this.txtNhapLaiMK.Name = "txtNhapLaiMK";
+            this.txtNhapLaiMK.PasswordChar = '*';
             this.txtNhapLaiMK.Size = new System.Drawing.Size(228, 30);
             this.txtNhapLaiMK.TabIndex = 1;
             // 

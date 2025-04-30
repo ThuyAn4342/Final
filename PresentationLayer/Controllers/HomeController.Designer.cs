@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabLichBay = new System.Windows.Forms.TabPage();
             this.pnBieuDo = new System.Windows.Forms.Panel();
@@ -95,7 +95,7 @@
             this.tabLichBay.ForeColor = System.Drawing.Color.DarkBlue;
             this.tabLichBay.Location = new System.Drawing.Point(4, 29);
             this.tabLichBay.Name = "tabLichBay";
-            this.tabLichBay.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabLichBay.Padding = new System.Windows.Forms.Padding(3);
             this.tabLichBay.Size = new System.Drawing.Size(1129, 630);
             this.tabLichBay.TabIndex = 0;
             this.tabLichBay.Text = "Lịch bay";
@@ -113,18 +113,18 @@
             // 
             // chart_Home
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart_Home.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chart_Home.ChartAreas.Add(chartArea2);
             this.chart_Home.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart_Home.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chart_Home.Legends.Add(legend2);
             this.chart_Home.Location = new System.Drawing.Point(0, 0);
             this.chart_Home.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chart_Home.Name = "chart_Home";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart_Home.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart_Home.Series.Add(series2);
             this.chart_Home.Size = new System.Drawing.Size(517, 624);
             this.chart_Home.TabIndex = 0;
             this.chart_Home.Text = "chart1";
@@ -204,7 +204,7 @@
             this.tabThongTinTK.ForeColor = System.Drawing.Color.DarkBlue;
             this.tabThongTinTK.Location = new System.Drawing.Point(4, 29);
             this.tabThongTinTK.Name = "tabThongTinTK";
-            this.tabThongTinTK.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabThongTinTK.Padding = new System.Windows.Forms.Padding(3);
             this.tabThongTinTK.Size = new System.Drawing.Size(1129, 630);
             this.tabThongTinTK.TabIndex = 1;
             this.tabThongTinTK.Text = "Thông tin tài khoản";
@@ -387,6 +387,7 @@
             this.txtMatKhau.ForeColor = System.Drawing.Color.Navy;
             this.txtMatKhau.Location = new System.Drawing.Point(190, 222);
             this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(264, 30);
             this.txtMatKhau.TabIndex = 98;
             // 

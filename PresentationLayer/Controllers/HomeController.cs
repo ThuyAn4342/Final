@@ -32,6 +32,7 @@ namespace PresentationLayer.Controllers
 
         ChucNangBL chucnangBL = new ChucNangBL();
         ChuyenBayBL chuyenbayBL = new ChuyenBayBL();
+        string Oldpass;
         private void LoadThongTinUser(TaiKhoanNDTO User)
         {
             //Load combobox chức năng
@@ -47,6 +48,7 @@ namespace PresentationLayer.Controllers
             txtSoDT.Text = User.soDT;
             txtLinkAnh.Text = User.linkAnh;
             txtMail.Text = User.mail;
+            Oldpass = User.matKhau;
 
             // Ảnh đại diện
             if (!string.IsNullOrEmpty(User.linkAnh) && File.Exists(User.linkAnh))
@@ -128,10 +130,13 @@ namespace PresentationLayer.Controllers
             string tenDangNhap = txtTenDN.Text;
             string soDT = txtSoDT.Text;
             string linkAnh = txtLinkAnh.Text;
-            string matKhau = HashPassword(txtMatKhau.Text);
+            string matKhau = txtMatKhau.Text;
             string mail = txtMail.Text;
 
-
+            if(matKhau.Equals(Oldpass) == false)
+            {
+                matKhau = HashPassword(txtMatKhau.Text);
+            }    
             try
             {
                 if (chucnang == null || string.IsNullOrEmpty(tenDangNhap) || string.IsNullOrEmpty(matKhau))
