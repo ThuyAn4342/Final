@@ -18,6 +18,7 @@ namespace PresentationLayer.Controllers
     {
         NguoiDungBL nguoidungBL = new NguoiDungBL();
         ChucNangBL chucnangBL = new ChucNangBL();
+        
         public TaiKhoanNDController()
         {
             InitializeComponent();
@@ -123,10 +124,11 @@ namespace PresentationLayer.Controllers
             Reset();
         }
 
+        string Oldpass;
         private void btnCapNhatTK_Click(object sender, EventArgs e)
         {
             int maND = 0;
-
+            
 
             // Xác định tab đang được chọn và lấy maND tương ứng
             if (tabTKND.SelectedTab == tabKH)
@@ -138,6 +140,7 @@ namespace PresentationLayer.Controllers
                     return;
                 }
                 maND = Convert.ToInt32(dgvTKKH.CurrentRow.Cells["maND"].Value);
+                Oldpass = dgvTKKH.CurrentRow.Cells["matKhau"].Value.ToString();
             }
             else if (tabTKND.SelectedTab == tabNV)
             {
@@ -148,6 +151,7 @@ namespace PresentationLayer.Controllers
                     return;
                 }
                 maND = Convert.ToInt32(dgvTKNV.CurrentRow.Cells["maND_NV"].Value);
+                Oldpass = dgvTKNV.CurrentRow.Cells["matKhau_NV"].Value.ToString();
             }
             else if (tabTKND.SelectedTab == tabQTV)
             {
@@ -158,13 +162,14 @@ namespace PresentationLayer.Controllers
                     return;
                 }
                 maND = Convert.ToInt32(dgvTKQTV.CurrentRow.Cells["maND_Admin"].Value);
+                Oldpass = dgvTKQTV.CurrentRow.Cells["matKhau_Admin"].Value.ToString();
             }
             int chucnang = Convert.ToInt32(cbChucNang.SelectedValue);
             string hoTen = txtHoTen.Text;
             string tenDangNhap = txtTenDN.Text;
             string soDT = txtSoDT.Text;
             string anhDaiDien = txtAnhDaiDien.Text;
-            string matKhau = HashPassword(txtMatKhau.Text);
+            string matKhau = txtMatKhau.Text;
             string mail = txtMail.Text;
 
 
@@ -174,7 +179,10 @@ namespace PresentationLayer.Controllers
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            if(Oldpass.Equals(matKhau) == false)
+            {
+                matKhau = HashPassword(txtMatKhau.Text);
+            }    
             bool result = nguoidungBL.UpdateNuoiDung(maND,hoTen, tenDangNhap, chucnang, soDT, matKhau, anhDaiDien, mail);
             if (result)
             {

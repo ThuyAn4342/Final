@@ -74,7 +74,6 @@
             this.txtMaHD = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvDSVeCuaHD = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.maVeHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenHK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maCBHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +82,7 @@
             this.maHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trangThaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inVeHD = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabQLVe.SuspendLayout();
             this.tabQLHD.SuspendLayout();
@@ -663,17 +663,6 @@
             this.dgvDSVeCuaHD.TabIndex = 51;
             this.dgvDSVeCuaHD.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSVeCuaHD_CellContentClick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(476, 208);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 25);
-            this.label1.TabIndex = 50;
-            this.label1.Text = "Danh sách vé";
-            // 
             // maVeHD
             // 
             this.maVeHD.DataPropertyName = "maVe";
@@ -731,6 +720,17 @@
             this.inVeHD.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.inVeHD.Text = "In vé";
             this.inVeHD.UseColumnTextForButtonValue = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Navy;
+            this.label1.Location = new System.Drawing.Point(476, 208);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 25);
+            this.label1.TabIndex = 50;
+            this.label1.Text = "Danh sách vé";
             // 
             // QuanLyVe_HoaDonController
             // 

@@ -48,17 +48,17 @@ namespace PresentationLayer.Controllers
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy vé với mã này!!");
+                    MessageBox.Show("Không tìm thấy vé với mã này!!", "Thông báo");
                 }
             }
             else if (txtMaVe.Text is null)
             {
-                MessageBox.Show("Mời nhập mã vé để tìm kiếm!");
+                MessageBox.Show("Mời nhập mã vé để tìm kiếm!","Thông báo");
                 txtMaVe.Focus();
             }
             else
             {
-                MessageBox.Show("Mã vé không hợp lệ! Mời nhập lại.");
+                MessageBox.Show("Mã vé không hợp lệ! Mời nhập lại.", "Thông báo");
                 txtMaVe.Focus();
 
             }
@@ -81,19 +81,19 @@ namespace PresentationLayer.Controllers
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy mã hóa đơn này!!!");
+                    MessageBox.Show("Không tìm thấy mã hóa đơn này!!!", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     txtMaHD.Focus();
                 }    
             }
             else if(txtMaHD.Text is null)
             {
-                MessageBox.Show("Vui lòng nhập mã hóa đơn!");
+                MessageBox.Show("Vui lòng nhập mã hóa đơn!", "Thông báo");
                 txtMaHD.Focus();
 
             }   
             else
             {
-                MessageBox.Show("Mã hóa đơn không hợp lệ! Vui lòng nhập lại.");
+                MessageBox.Show("Mã hóa đơn không hợp lệ! Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMaHD.Clear();
                 txtMaHD.Focus();
             }    
@@ -117,7 +117,7 @@ namespace PresentationLayer.Controllers
 
             if (v == null)
             {
-                MessageBox.Show($"Không tìm thấy thông tin vé với mã {maVe}");
+                MessageBox.Show($"Không tìm thấy thông tin vé với mã {maVe}","Thông báo");
                 return;
             }
 
