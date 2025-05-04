@@ -23,25 +23,23 @@ namespace PresentationLayer.QuenMatKhau
             try
             {
                 var parentForm = this.FindForm() as ForgotPassword;
-                if (txtMaXacNhan.Text == parentForm.MaXacNhanDaGui)
+                if(parentForm != null)
                 {
-                    // Lấy form cha
-
-                    if (parentForm != null)
+                    if (txtMaXacNhan.Text == parentForm.MaXacNhanDaGui)
                     {
-
                         // Gọi hàm load controller có sẵn trong form
                         parentForm.LoadController(new ThayDoiMatKhau());
-                    }
 
-                }
-                else
-                {
-                    MessageBox.Show("Mã xác nhận không đúng!", "Thông báo", 
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMaXacNhan.Clear();
-                    txtMaXacNhan.Focus();
-                }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mã xác nhận không đúng!", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtMaXacNhan.Clear();
+                        txtMaXacNhan.Focus();
+                    }
+                }    
+               
             }
             catch (Exception ex)
             {

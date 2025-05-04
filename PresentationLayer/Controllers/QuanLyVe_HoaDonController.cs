@@ -304,7 +304,7 @@ namespace PresentationLayer.Controllers
 
                         // In hóa đơn đầu tiên (lấy từ dòng đầu)
                         int maHD = Convert.ToInt32(dgvDSVeCuaHD.Rows[0].Cells["MaHD"].Value);
-                        InHoaDon(maHD, doc);  // -> bạn sẽ định nghĩa thêm hàm này
+                        InHoaDon(maHD, doc);  
                         LineSeparator line = new LineSeparator(1f, 100f, BaseColor.GRAY, Element.ALIGN_CENTER, -2);
                         doc.Add(new Chunk(line));
                         doc.Add(new Paragraph("\n"));

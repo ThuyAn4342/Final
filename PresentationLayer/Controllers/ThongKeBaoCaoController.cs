@@ -123,7 +123,7 @@ namespace PresentationLayer.Controllers
 
         }
 
-        /// IN BÁO CÁO //
+        // IN BÁO CÁO //
 
         private void btnInBC_Click(object sender, EventArgs e)
         {
@@ -206,7 +206,7 @@ namespace PresentationLayer.Controllers
                     // Thêm điểm dữ liệu vào series
                     DataPoint point = new DataPoint();
                     point.SetValueY(tiLe);
-                    point.Label = $"{tiLe}%";
+                    point.Label = $"{tiLeStr}%";
                     point.LegendText = tenTB;
 
                     series.Points.Add(point);
@@ -239,8 +239,8 @@ namespace PresentationLayer.Controllers
 
                 string fromAdd = "haonhutthach10@gmail.com";
                 string toAdd = CurrentUserTO.Email;
-                string subject = "Báo cáo sân bay (Excel)";
-                string body = "File Excel báo cáo danh sách sân bay được đính kèm.";
+                string subject = "Báo cáo hệ thống chuyến bay (Excel)";
+                string body = "File Excel báo cáo hệ thống chuyến bay được đính kèm.";
 
                 using (MailMessage mail = new MailMessage(fromAdd, toAdd, subject, body))
                 {
