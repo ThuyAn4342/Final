@@ -16,11 +16,9 @@
     <pre><code>1. Mở SQL Server Management Studio (SSMS)
 2. Kết nối đến SQL Server
 3. Chạy file <code>FlightManagement.sql</code> để tạo database</code></pre>
-    
     <h3>Bước 3: Chạy Ứng Dụng</h3>
     <pre><code>1. Mở Visual Studio
 2. Mở project <code>QuanLyChuyenBay.sln</code>
-3. Nhấn F5 để chạy chương trình</code></pre>
-   
+3. Nhấn F5 để chạy chương trình</code></pre> 
 </body>
 </html>
