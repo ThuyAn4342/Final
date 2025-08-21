@@ -10,7 +10,7 @@
     </ul>
     <h2>2. Cài Đặt và Chạy Dự Án</h2>
     <h3>Bước 1: Clone Repository</h3>
-    <pre><code>git clone https://github.com/haothach/QuanLyChuyenBay.git</code></pre>
+    <pre><code>git clone https://github.com/ThuyAn4342/Final.git</code></pre>
     <h3>Bước 2: Cấu Hình Database</h3>
     <p>Import file SQL có sẵn trong thư mục <code>Database</code> vào SQL Server:</p>
     <pre><code>1. Mở SQL Server Management Studio (SSMS)
